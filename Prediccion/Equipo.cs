@@ -12,12 +12,12 @@ namespace Prediccion
 
         private Equipo(int id, string nombre)
         {
-            if (Validations.Validar(Validations.ValidationTypes.GreatherThanZero, id))
+            if (!Validations.Validar(Validations.ValidationTypes.GreatherThanZero, id))
             {
                 throw new Exception(Mensajes.IdIncorrecto);
             }
 
-            if (Validations.Validar(Validations.ValidationTypes.IsNotNullOrEmpyAndWhiteSpaces, nombre))
+            if (!Validations.Validar(Validations.ValidationTypes.IsNotNullOrEmpyAndWhiteSpaces, nombre))
             {
                 throw new Exception(Mensajes.NombreIncorrecto);
             }
