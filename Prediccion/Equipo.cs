@@ -3,29 +3,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Common;
 
 namespace Prediccion
 {
     public class Equipo
     {
-        private Equipo()
-        {
 
+        private Equipo(int id, string nombre)
+        {
+            if (Validations.Validar(Validations.ValidationTypes.GreatherThanZero, id))
+            {
+                throw new Exception(Mensajes.IdIncorrecto);
+            }
+
+            if (Validations.Validar(Validations.ValidationTypes.IsNotNullOrEmpyAndWhiteSpaces, nombre))
+            {
+                throw new Exception(Mensajes.NombreIncorrecto);
+            }
+            Id = id;
+            Nombre = nombre;
         }
 
-        public static Equipo Create()
+        public string Nombre
         {
-            return new Equipo();
-        }
-
-        public string Nombre { get { return "Argentina"; }
-            set { throw new NotImplementedException(); }
+            get;
+            set;
         }
 
         public int Id
         {
-            get { return 1; }
-            set { throw new NotImplementedException(); }
+            get;
+            set;
+        }
+
+        public static Equipo Create(int id, string nombre)
+        {
+            return new Equipo(id, nombre);
         }
     }
 }

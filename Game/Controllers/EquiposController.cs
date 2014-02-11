@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Web.Http;
+using Prediccion;
 
 namespace Game.Controllers
 {
@@ -14,9 +15,11 @@ namespace Game.Controllers
         public HttpResponseMessage Get(string id)
         {
             HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
-            
-            response.Content = new StringContent("{equipoid:1, equiponombre:argentina}");
-
+            var equipos = new List<Equipo>();
+            equipos.Add(Equipo.Create(1, "Argentina"));
+            equipos.Add(Equipo.Create(2, "Brasil"));
+            equipos.Add(Equipo.Create(3, "Uruguay"));
+            response.Content = new ObjectContent(typeof(List<Equipo>), equipos, new JsonMediaTypeFormatter()); // new StringContent("{equipoid:1, equiponombre:argentina}");
             return response;
         }
     }

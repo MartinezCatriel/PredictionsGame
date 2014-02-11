@@ -3,3 +3,10 @@ C:\Users\casa\Desktop\PredictionsApp\Prediccion\bin\Debug\Prediccion.dll
 C:\Users\casa\Desktop\PredictionsApp\Prediccion\bin\Debug\Prediccion.pdb
 C:\Users\casa\Desktop\PredictionsApp\Prediccion\obj\Debug\Prediccion.dll
 C:\Users\casa\Desktop\PredictionsApp\Prediccion\obj\Debug\Prediccion.pdb
+C:\Users\casa\Desktop\PredictionsGame\Prediccion\obj\Debug\Prediccion.csprojResolveAssemblyReference.cache
+C:\Users\casa\Desktop\PredictionsGame\Prediccion\obj\Debug\Prediccion.dll
+C:\Users\casa\Desktop\PredictionsGame\Prediccion\bin\Debug\Prediccion.dll
+C:\Users\casa\Desktop\PredictionsGame\Prediccion\bin\Debug\Prediccion.pdb
+C:\Users\casa\Desktop\PredictionsGame\Prediccion\bin\Debug\Common.dll
+C:\Users\casa\Desktop\PredictionsGame\Prediccion\bin\Debug\Common.pdb
+C:\Users\casa\Desktop\PredictionsGame\Prediccion\obj\Debug\Prediccion.pdb
