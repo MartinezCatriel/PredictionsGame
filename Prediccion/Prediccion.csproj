@@ -43,6 +43,7 @@
     <Compile Include="AnimalCreator.cs" />
     <Compile Include="Equipo.cs" />
     <Compile Include="Leon.cs" />
+    <Compile Include="Partido.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Pulpo.cs" />
   </ItemGroup>

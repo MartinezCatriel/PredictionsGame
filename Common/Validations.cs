@@ -16,10 +16,11 @@ namespace Common
             IsString = 3,
             IsDecimal = 4,
             IsBool = 5,
-            IsDateTime = 6
+            IsDateTime = 6,
+            EqualTo = 7
         }
 
-        public static bool Validar(ValidationTypes validationType, object toValidate)
+        public static bool Validar(ValidationTypes validationType, object toValidate, object valueToCompare = null)
         {
             switch (validationType)
             {
@@ -38,6 +39,8 @@ namespace Common
                 case ValidationTypes.IsInt:
                     int outValue = 0;
                     return Int32.TryParse(toValidate.ToString(), out outValue);
+                case ValidationTypes.EqualTo:
+                    return valueToCompare != null && toValidate.Equals(valueToCompare);
             }
             return false;
         }

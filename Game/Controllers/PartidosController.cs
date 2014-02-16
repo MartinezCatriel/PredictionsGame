@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Prediccion;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -14,25 +16,31 @@ namespace Game.Controllers
         public HttpResponseMessage Get()
         {
             var response = new HttpResponseMessage(HttpStatusCode.OK);
-            var listaDePartidos = new List<Dictionary<string, string>>();
-            var dic = new Dictionary<string, string>();
-            dic.Add("Id", "1");
-            dic.Add("Equipos", "{Brasil,Croacia");
-            dic.Add("Fecha-Hora", "Jueves 12 de Junio 17:00hs");
-            dic.Add("Ganador", "Brasil");
-            dic.Add("Geolocalizacion", "San Pablo");
-            dic.Add("GolesPorEquipo", "{Equipo:1, Goles:0},{Equipo:2, Goles:0}");
-            listaDePartidos.Add(dic);
-            dic = new Dictionary<string, string>();
-            dic.Add("Id", "2");
-            dic.Add("Equipos", "{Mexico,Camerun");
-            dic.Add("Fecha-Hora", "Viernes 13 de junio 13:00hs");
-            dic.Add("Ganador", "Brasil");
-            dic.Add("Geolocalizacion", "San Pablo");
-            dic.Add("GolesPorEquipo", "{Equipo:1, Goles:0},{Equipo:2, Goles:0}");
-            listaDePartidos.Add(dic);
-            response.Content = new ObjectContent(typeof(List<Dictionary<string, string>>), listaDePartidos, new JsonMediaTypeFormatter());
+            try
+            {
 
+                var listaDePartidos = new List<Partido>();
+                Partido unPartido;
+
+                var equipos = new List<Equipo>();
+                equipos.Add(Equipo.Create(1, "Brasil"));
+                equipos.Add(Equipo.Create(2, "Croacia"));
+                unPartido = Partido.Create(1, equipos, DateTime.Now, "San Pablo");
+                unPartido.SetGolesPorEquipo(1, 0);
+                unPartido.SetGolesPorEquipo(2, 0);
+                listaDePartidos.Add(unPartido);
+
+                equipos = new List<Equipo>();
+                equipos.Add(Equipo.Create(3, "Mexico"));
+                equipos.Add(Equipo.Create(4, "Camerun"));
+                unPartido = Partido.Create(2, equipos, DateTime.Now.AddDays(1), "Natal");
+                listaDePartidos.Add(unPartido);
+                response.Content = new ObjectContent(typeof(List<Partido>), listaDePartidos, new JsonMediaTypeFormatter());
+            }
+            catch (Exception ex)
+            {
+                response.Content = new ObjectContent(typeof(string), ex.Message, new JsonMediaTypeFormatter());
+            }
             return response;
         }
 

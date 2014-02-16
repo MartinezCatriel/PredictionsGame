@@ -41,5 +41,10 @@ namespace Prediccion
         {
             return new Equipo(id, nombre);
         }
+
+        public override bool Equals(object obj)
+        {
+            return Id == ((Equipo)obj).Id;
+        }
     }
 }

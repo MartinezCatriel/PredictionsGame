@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Common;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,19 +12,48 @@ namespace Prediccion
     {
         public int Id { get; set; }
         public DateTime Fecha { get; set; }
-        public Equipo Ganador { get { return Equipo.Create(1, "nombre"); } }
-        public Geolocalizacion geo { get; set; }
+        public Equipo Ganador
+        {
+            get
+            {
+                //obtengo el id del equipo con la mayor cantidad de goles
+                var item = (from pair in GolesPorEquipo
+                            orderby pair.Value descending
+                            select pair).FirstOrDefault().Key;
+                return Equipos.Find((equi) => { return Equals(equi.Id, item); });
+
+            }
+        }
+        public string Geolocalizacion { get; set; }
         public Dictionary<int, int> GolesPorEquipo { get; private set; }
         public List<Equipo> Equipos { get; set; }
 
-        private Partido(int id, List<Equipo> equipos, DateTime fecha)
+        private Partido(int id, IEnumerable<Equipo> equipos, DateTime fecha, string geo)
         {
-
+            Id = id;
+            Equipos = new List<Equipo>();
+            Equipos.AddRange(equipos);
+            if (!Validations.Validar(Validations.ValidationTypes.EqualTo, Equipos.Count, 2))
+            {
+                throw new Exception(Mensajes.LaCantidadDeEquiposDebeSer2);
+            }
+            Fecha = fecha;
+            Geolocalizacion = geo;
+            GolesPorEquipo = new Dictionary<int, int>();
         }
 
-        public static Partido Create()
+        public static Partido Create(int id, IEnumerable<Equipo> equipos, DateTime fecha, string geo)
         {
-            return new Partido();
+            return new Partido(id, equipos, fecha, geo);
+        }
+
+        public void SetGolesPorEquipo(int equipo, int goles)
+        {
+            if (Equipos.Find(equi => equi.Id == equipo) == null)
+            {
+                throw new Exception("El id del equipo debe ser uno de los participantes del partido");
+            }
+            GolesPorEquipo[equipo] = goles;
         }
     }
 }
