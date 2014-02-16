@@ -35,6 +35,9 @@ namespace Common
                         return false;
                     }
                     return true;
+                case ValidationTypes.IsInt:
+                    int outValue = 0;
+                    return Int32.TryParse(toValidate.ToString(), out outValue);
             }
             return false;
         }

@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="ff37a846-ff60-4851-b91d-d8f17add9e93" name="Partidos-Equipos" linkedPackageId="c709c78f-def3-418b-a59a-a9acbad11c29" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="afe548de-3eae-40ab-b172-98bbc754eaa3" name="Partido" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="87cfa4c6-3cc8-4b47-873b-46e569d9d5fc" />
+        <ownedAttributesInternal>
+          <property Id="cc3f92ee-6cf9-4138-b302-aeaa25f5d2af" name="Equipos" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="021d6bba-cc98-4a4c-84df-9ca3145196ce" />
+          </property>
+          <property Id="d04102ff-0a1a-48f9-88fc-31714a4be729" name="GolesPorEquipo" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="308780cb-79e9-4d17-8a6a-acd5c5e6aa09" />
+          </property>
+          <property Id="dd67507f-8e2e-43f4-ba5f-2a39ea55a981" name="Ganador" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="4f1f0e2c-928c-4511-877a-e8966be3f7f3" />
+          </property>
+          <property Id="7d0aef51-acad-4758-a9f6-5c01b86e128f" name="Id" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="3b38e901-a033-47e0-86b1-05b640d94089" />
+          </property>
+          <property Id="12cff80a-de93-4055-a083-3e9ae29c68f9" name="Geolocalizacion" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="f1d73500-787f-47f2-bee8-75c9fd3eb112" />
+          </property>
+          <property Id="9a51a48c-2e30-45e6-ad8d-52245caea4dc" name="Fecha-Hora" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="3acb11ec-3009-48bd-bbfd-9c793baa4e5b" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="e8026ba6-e8e1-41e2-8acc-90806f7ad717" name="Usuario" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="1ab6ef5a-270a-497e-b983-5515e8feba21" />
+        <targetEnds>
+          <association Id="c29fdfb6-2a50-48dc-941a-092d79fd9a65" isDerived="false" sourceEndRoleName="Usuario" targetEndRoleName="UsuarioPartidoPrediccion" isLeaf="false" isAbstract="false">
+            <classMoniker Id="4ec95c9a-8e84-4343-84c8-6906ed6829f4" LastKnownName="UsuarioPartidoPrediccion" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b4e823fe-cd32-4366-b5ce-fafe78927b6c" name="Usuario" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="fa7c8a46-d3e0-441d-94c4-9c0520b010bf" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="29ddf519-9972-4086-bedc-b5a6529bd664" name="UsuarioPartidoPrediccion" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="d2107301-6e9d-48d4-a4ff-3f684d9456de" name="Lower" value="muchos">
+                      <elementDefinition Id="d4ee9861-33ec-4696-9235-bd1f08fa437a" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="c2da1fa4-1c59-4713-b4b4-72b8d96da690" name="Upper" value="muchos">
+                      <elementDefinition Id="7df20aa2-e514-4964-91a3-d9bad008b87c" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="3f1b1712-d8b0-4d0a-aa9c-3a60da40e6aa" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="6ea31d17-666e-4cdc-93d9-8c1d3c6dd457" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="5b7e1797-f2a5-4644-81d9-214b14fde38a" name="Id" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="24863b5e-1db5-4664-ad78-7d6483b057f1" />
+          </property>
+          <property Id="85442f35-33b0-4328-b1e9-4e5a707be0f5" name="Nombre" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="bd76be11-3a94-480c-b3b7-b916cee4dc2b" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="4ec95c9a-8e84-4343-84c8-6906ed6829f4" name="UsuarioPartidoPrediccion" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="107ab43c-42ba-40f2-9566-bb292e306ec8" />
+        <ownedAttributesInternal>
+          <property Id="05884d3d-76aa-4742-950b-c2f94950d5d4" name="IdUsuario" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="b4e10dd7-be0b-47cc-9b48-9ceb8c36404c" />
+          </property>
+          <property Id="3b106acb-1e1b-4743-93b7-b6886eed9740" name="IdPartido" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="97d9abc2-e0cc-4f34-aabc-deb552ca3421" />
+          </property>
+          <property Id="43d385ef-a2cc-45f0-8235-d61f4f80d407" name="GolesPrediccionPorEquipo" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="6d4a88f1-8c12-4b29-8c3d-52b190ca03e3" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="32e90c31-1c4d-460d-a073-833367efc20b" name="Equipo" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="e8358453-81f6-498a-98d2-f3ca65107efe" />
+        <targetEnds>
+          <association Id="8203ee58-c369-4909-aa83-5fd697e57a55" isDerived="false" sourceEndRoleName="Equipo" targetEndRoleName="Partido" isLeaf="false" isAbstract="false">
+            <classMoniker Id="afe548de-3eae-40ab-b172-98bbc754eaa3" LastKnownName="Partido" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="df2795dc-aa4b-4ad8-a140-4a111d721565" name="Equipo" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString Id="d87d256c-1b90-4436-a557-ce361070d510" name="Lower" value="2">
+                      <elementDefinition Id="aeb05a44-3834-4838-bea8-cd7d89b9bf9c" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="e31f9273-8436-4a3b-8c24-79eb9a0fafd0" name="Upper" value="2">
+                      <elementDefinition Id="46c40c85-1407-4271-ae57-f1a7e5ed0021" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="2eb1b6f8-9734-40d6-90cf-8546ced8b1e8" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4c471317-3ffb-49ad-a354-a83b66a1b3d7" name="Partido" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <elementDefinition Id="2707de71-a4a5-48f3-a86e-95c13d3203a2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="8acb89ed-0646-4825-b84b-5b2a8af8dbff" />
+          </association>
+        </targetEnds>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="c709c78f-def3-418b-a59a-a9acbad11c29" name="ClassDiagrams">
+    <elementDefinition Id="4f4f7739-9670-43d9-baa7-d2d93a97086b" />
+    <profileInstances>
+      <packageHasProfileInstances Id="52434d53-b59a-4dd3-9372-df7d970b7e88">
+        <profileInstance Id="785f31e0-6860-43c2-9a63-8f36b3ff17b9" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="9a8370a8-8ec7-4849-9349-eb7c493f80d2">
+        <profileInstance Id="0471ee72-314f-43fa-8cbc-977cf2fc8b6c" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</logicalClassDesignerModel>

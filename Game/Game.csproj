@@ -241,6 +241,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{F76B363D-2E44-4024-A2E2-F70E02DE68CA}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Prediccion\Prediccion.csproj">
       <Project>{0A3EE39F-0D62-4D0B-AE73-7699FBB0F8C4}</Project>
       <Name>Prediccion</Name>

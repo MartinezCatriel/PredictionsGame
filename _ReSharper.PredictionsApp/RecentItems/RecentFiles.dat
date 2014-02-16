@@ -1,20 +1,22 @@
 ﻿<RecentFiles>
   <RecentFiles>
-    <File id="291899B7-83AF-43B9-85FB-3542C236954A/d:Controllers/f:PartidosController.cs" caret="0" fromTop="0" />
     <File id="291899B7-83AF-43B9-85FB-3542C236954A/d:Controllers/f:ValuesController.cs" caret="295" fromTop="12" />
     <File id="291899B7-83AF-43B9-85FB-3542C236954A/d:Controllers/f:UsuariosController.cs" caret="0" fromTop="0" />
     <File id="F76B363D-2E44-4024-A2E2-F70E02DE68CA/f:Mensajes.cs" caret="285" fromTop="11" />
     <File id="F76B363D-2E44-4024-A2E2-F70E02DE68CA/f:Validations.cs" caret="1160" fromTop="11" />
-    <File id="291899B7-83AF-43B9-85FB-3542C236954A/d:Controllers/f:EquiposController.cs" caret="285" fromTop="5" />
-    <File id="0A3EE39F-0D62-4D0B-AE73-7699FBB0F8C4/f:Equipo.cs" caret="454" fromTop="18" />
-    <File id="0A3EE39F-0D62-4D0B-AE73-7699FBB0F8C4/f:Leon.cs" caret="187" fromTop="7" />
     <File id="0A3EE39F-0D62-4D0B-AE73-7699FBB0F8C4/f:AnimalCreator.cs" caret="535" fromTop="17" />
-    <File id="0A3EE39F-0D62-4D0B-AE73-7699FBB0F8C4/f:Pulpo.cs" caret="468" fromTop="19" />
     <File id="0A3EE39F-0D62-4D0B-AE73-7699FBB0F8C4/f:Animal.cs" caret="182" fromTop="9" />
     <File id="F17FE92A-E053-4590-8233-9943F58BCAE7/d:Controllers/f:ValuesControllerTest.cs" caret="1347" fromTop="46" />
     <File id="F17FE92A-E053-4590-8233-9943F58BCAE7/d:Controllers/f:EquipoTest.cs" caret="552" fromTop="14" />
-    <File id="291899B7-83AF-43B9-85FB-3542C236954A/d:Controllers/f:AnimalesController.cs" caret="764" fromTop="20" />
     <File id="291899B7-83AF-43B9-85FB-3542C236954A/f:Web.config" caret="0" fromTop="0" />
+    <File id="F68F16A9-E509-4C51-968D-8EA252B500C7/f:IRepository.cs" caret="327" fromTop="13" />
+    <File id="F68F16A9-E509-4C51-968D-8EA252B500C7/d:Repositories/f:XMLRepository.cs" caret="0" fromTop="0" />
+    <File id="0A3EE39F-0D62-4D0B-AE73-7699FBB0F8C4/f:Leon.cs" caret="187" fromTop="7" />
+    <File id="0A3EE39F-0D62-4D0B-AE73-7699FBB0F8C4/f:Pulpo.cs" caret="468" fromTop="19" />
+    <File id="291899B7-83AF-43B9-85FB-3542C236954A/d:Controllers/f:AnimalesController.cs" caret="1096" fromTop="16" />
+    <File id="291899B7-83AF-43B9-85FB-3542C236954A/d:Controllers/f:EquiposController.cs" caret="0" fromTop="0" />
+    <File id="291899B7-83AF-43B9-85FB-3542C236954A/d:Controllers/f:PartidosController.cs" caret="137" fromTop="6" />
+    <File id="0A3EE39F-0D62-4D0B-AE73-7699FBB0F8C4/f:Equipo.cs" caret="0" fromTop="0" />
   </RecentFiles>
   <RecentEdits>
     <File id="F17FE92A-E053-4590-8233-9943F58BCAE7/d:Controllers/f:ValuesControllerTest.cs" caret="1347" fromTop="46" />
@@ -29,5 +31,6 @@
     <File id="0A3EE39F-0D62-4D0B-AE73-7699FBB0F8C4/f:Pulpo.cs" caret="468" fromTop="19" />
     <File id="0A3EE39F-0D62-4D0B-AE73-7699FBB0F8C4/f:AnimalCreator.cs" caret="535" fromTop="17" />
     <File id="291899B7-83AF-43B9-85FB-3542C236954A/d:Controllers/f:AnimalesController.cs" caret="764" fromTop="20" />
+    <File id="F68F16A9-E509-4C51-968D-8EA252B500C7/d:Repositories/f:XMLRepository.cs" caret="1450" fromTop="25" />
   </RecentEdits>
 </RecentFiles>

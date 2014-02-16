@@ -1,0 +1,5 @@
+C:\Users\casa\Desktop\PredictionsGame\Repository\bin\Debug\Repository.dll
+C:\Users\casa\Desktop\PredictionsGame\Repository\bin\Debug\Repository.pdb
+C:\Users\casa\Desktop\PredictionsGame\Repository\obj\Debug\Repository.csprojResolveAssemblyReference.cache
+C:\Users\casa\Desktop\PredictionsGame\Repository\obj\Debug\Repository.dll
+C:\Users\casa\Desktop\PredictionsGame\Repository\obj\Debug\Repository.pdb
