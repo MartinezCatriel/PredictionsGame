@@ -15,6 +15,14 @@ namespace Game.Controllers
         public HttpResponseMessage Get(string id)
         {
             HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
+            var unEquipo = Equipo.Create(1, "Argentina");
+            response.Content = new ObjectContent(typeof(Equipo), unEquipo, new JsonMediaTypeFormatter()); // new StringContent("{equipoid:1, equiponombre:argentina}");
+            return response;
+        }
+
+        public HttpResponseMessage Get()
+        {
+            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
             var equipos = new List<Equipo>();
             equipos.Add(Equipo.Create(1, "Argentina"));
             equipos.Add(Equipo.Create(2, "Brasil"));
