@@ -46,5 +46,10 @@ namespace Prediccion
         {
             return Id == ((Equipo)obj).Id;
         }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }
