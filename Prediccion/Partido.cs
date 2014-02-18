@@ -19,8 +19,12 @@ namespace Prediccion
                 //obtengo el id del equipo con la mayor cantidad de goles
                 var item = (from pair in GolesPorEquipo
                             orderby pair.Value descending
-                            select pair).FirstOrDefault().Key;
-                return Equipos.Find((equi) => { return Equals(equi.Id, item); });
+                            select pair).FirstOrDefault();
+                if (!Validations.Validar(Validations.ValidationTypes.GreatherThanZero, item.Value))
+                {
+                    return null;
+                }
+                return Equipos.Find((equi) => { return Equals(equi.Id, item.Key); });
 
             }
         }

@@ -1,5 +1,5 @@
-2014/02/11-20:09:18.564 f40 Recovering log #15
-2014/02/11-20:09:18.564 f40 Level-0 table #18: started
-2014/02/11-20:09:18.600 f40 Level-0 table #18: 3870 bytes OK
-2014/02/11-20:09:18.667 f40 Delete type=0 #15
-2014/02/11-20:09:18.668 f40 Delete type=3 #13
+2014/02/16-18:27:11.675 b28 Recovering log #22
+2014/02/16-18:27:11.676 b28 Level-0 table #24: started
+2014/02/16-18:27:11.743 b28 Level-0 table #24: 61177 bytes OK
+2014/02/16-18:27:11.814 b28 Delete type=0 #22
+2014/02/16-18:27:11.814 b28 Delete type=3 #20

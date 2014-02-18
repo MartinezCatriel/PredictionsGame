@@ -34,6 +34,8 @@ namespace Game.Controllers
                 equipos.Add(Equipo.Create(3, "Mexico"));
                 equipos.Add(Equipo.Create(4, "Camerun"));
                 unPartido = Partido.Create(2, equipos, DateTime.Now.AddDays(1), "Natal");
+                unPartido.SetGolesPorEquipo(3, 0);
+                unPartido.SetGolesPorEquipo(4, 0);
                 listaDePartidos.Add(unPartido);
                 response.Content = new ObjectContent(typeof(List<Partido>), listaDePartidos, new JsonMediaTypeFormatter());
             }
@@ -47,18 +49,29 @@ namespace Game.Controllers
         public HttpResponseMessage Get(string id)
         {
             var response = new HttpResponseMessage(HttpStatusCode.OK);
+            try
+            {
+                Partido unPartido;
 
-            var dic = new Dictionary<string, string>();
-            dic.Add("Id", "1");
-            dic.Add("Equipos", "{Brasil,Croacia");
-            dic.Add("Fecha-Hora", "17:00");
-            dic.Add("Ganador", "Brasil");
-            dic.Add("Geolocalizacion", "San Pablo");
-            dic.Add("GolesPorEquipo", "{Equipo:1, Goles:0},{Equipo:2, Goles:0}");
-
-            response.Content = new ObjectContent(typeof(Dictionary<string, string>), dic, new JsonMediaTypeFormatter());
-
+                var equipos = new List<Equipo>();
+                equipos.Add(Equipo.Create(1, "Brasil"));
+                equipos.Add(Equipo.Create(2, "Croacia"));
+                unPartido = Partido.Create(1, equipos, DateTime.Now, "San Pablo");
+                unPartido.SetGolesPorEquipo(1, 0);
+                unPartido.SetGolesPorEquipo(2, 0);
+                response.Content = new ObjectContent(typeof(Partido), unPartido, new JsonMediaTypeFormatter());
+            }
+            catch (Exception ex)
+            {
+                response.Content = new ObjectContent(typeof(string), ex.Message, new JsonMediaTypeFormatter());
+            }
             return response;
+        }
+
+        public HttpResponseMessage Post()
+        {
+
+            return new HttpResponseMessage(HttpStatusCode.OK);
         }
     }
 }
