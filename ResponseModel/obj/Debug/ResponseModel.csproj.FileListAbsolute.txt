@@ -1,0 +1,5 @@
+C:\Users\casa\Desktop\PredictionsGame\ResponseModel\bin\Debug\ResponseModel.dll
+C:\Users\casa\Desktop\PredictionsGame\ResponseModel\bin\Debug\ResponseModel.pdb
+C:\Users\casa\Desktop\PredictionsGame\ResponseModel\obj\Debug\ResponseModel.csprojResolveAssemblyReference.cache
+C:\Users\casa\Desktop\PredictionsGame\ResponseModel\obj\Debug\ResponseModel.dll
+C:\Users\casa\Desktop\PredictionsGame\ResponseModel\obj\Debug\ResponseModel.pdb

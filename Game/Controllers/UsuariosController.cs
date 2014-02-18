@@ -16,7 +16,7 @@ namespace Game.Controllers
             var response = new HttpResponseMessage(HttpStatusCode.OK);
             try
             {
-                var unUsuario = Usuario.Create(Convert.ToInt32(id), "German Gimenez");
+                var unUsuario = Usuario.Create(Convert.ToInt32(id), "German Gimenez", "FBK");
                 response.Content = new ObjectContent(typeof(Usuario), unUsuario, new JsonMediaTypeFormatter());
             }
             catch (Exception ex)
@@ -32,13 +32,16 @@ namespace Game.Controllers
             var response = new HttpResponseMessage(HttpStatusCode.OK);
             try
             {
-                var listaDeUsuarios
-                var unUsuario = Usuario.Create(Convert.ToInt32(id), "German Gimenez");
-                response.Content = new ObjectContent(typeof(List<Usuario>), unUsuario, new JsonMediaTypeFormatter());
+                var listaDeUsuarios = new List<Usuario>(2);
+                var unUsuario = Usuario.Create(1, "German Gimenez","FBK");
+                listaDeUsuarios.Add(unUsuario);
+                unUsuario = Usuario.Create(2, "Carlos Talarga", "GGL");
+                listaDeUsuarios.Add(unUsuario);
+                response.Content = new ObjectContent(typeof(List<Usuario>), listaDeUsuarios, new JsonMediaTypeFormatter());
             }
             catch (Exception ex)
             {
-                response.Content = new ObjectContent(typeof(string), "Error con el usuario", new JsonMediaTypeFormatter());
+                response.Content = new ObjectContent(typeof(string), "Error los usuarios", new JsonMediaTypeFormatter());
                 return response;
             }
             return response;
