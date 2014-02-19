@@ -24,7 +24,7 @@ namespace Prediccion
                 {
                     return null;
                 }
-                return Equipos.Find((equi) => { return Equals(equi.Id, item.Key); });
+                return Equipos.Find((equi) => { return equi.Id == item.Key; });
 
             }
         }

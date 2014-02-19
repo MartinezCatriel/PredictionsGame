@@ -12,7 +12,6 @@ namespace Game.Controllers
 
         public HttpResponseMessage Get(int equipo)
         {
-
             return new HttpResponseMessage();
         }
 
