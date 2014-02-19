@@ -1,8 +1,0 @@
-<Modules>
-  <Module PersistentId="291899B7-83AF-43B9-85FB-3542C236954A" ModuleId="Game" />
-  <Module PersistentId="F17FE92A-E053-4590-8233-9943F58BCAE7" ModuleId="Game.Tests" />
-  <Module PersistentId="0A3EE39F-0D62-4D0B-AE73-7699FBB0F8C4" ModuleId="Prediccion" />
-  <Module PersistentId="F76B363D-2E44-4024-A2E2-F70E02DE68CA" ModuleId="Common" />
-  <Module PersistentId="F68F16A9-E509-4C51-968D-8EA252B500C7" ModuleId="Repository" />
-  <Module PersistentId="0830C1D7-B30F-4E62-BCD3-C7FC146F75A2" ModuleId="ResponseModel" />
-</Modules>
