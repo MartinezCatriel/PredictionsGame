@@ -25,7 +25,7 @@ namespace Game.Controllers
                 var equipos = new List<Equipo>();
                 equipos.Add(Equipo.Create(1, "Brasil"));
                 equipos.Add(Equipo.Create(2, "Croacia"));
-                unPartido = Partido.Create(1, equipos, Convert.ToDateTime("12-06-2014 17:00"), "San Pablo");
+                unPartido = Partido.Create(1, equipos, Convert.ToDateTime("2014-06-12 17:00"), "San Pablo");
                 unPartido.SetGolesPorEquipo(1, 0);
                 unPartido.SetGolesPorEquipo(2, 0);
                 listaDePartidos.Add(unPartido);
@@ -33,7 +33,7 @@ namespace Game.Controllers
                 equipos = new List<Equipo>();
                 equipos.Add(Equipo.Create(3, "Mexico"));
                 equipos.Add(Equipo.Create(4, "Camerun"));
-                unPartido = Partido.Create(2, equipos, Convert.ToDateTime("13-06-2014 13:00"), "Natal");
+                unPartido = Partido.Create(2, equipos, Convert.ToDateTime("2014-06-13 13:00"), "Natal");
                 unPartido.SetGolesPorEquipo(3, 0);
                 unPartido.SetGolesPorEquipo(4, 0);
                 listaDePartidos.Add(unPartido);
@@ -41,7 +41,7 @@ namespace Game.Controllers
                 equipos = new List<Equipo>();
                 equipos.Add(Equipo.Create(1, "Brasil"));
                 equipos.Add(Equipo.Create(3, "Mexico"));
-                unPartido = Partido.Create(2, equipos, Convert.ToDateTime("17-06-2014 16:00"), "Fortaleza");
+                unPartido = Partido.Create(2, equipos, Convert.ToDateTime("2014-06-17 16:00"), "Fortaleza");
                 unPartido.SetGolesPorEquipo(1, 0);
                 unPartido.SetGolesPorEquipo(3, 0);
                 listaDePartidos.Add(unPartido);
@@ -49,7 +49,7 @@ namespace Game.Controllers
                 equipos = new List<Equipo>();
                 equipos.Add(Equipo.Create(4, "Camerun"));
                 equipos.Add(Equipo.Create(2, "Croacia"));
-                unPartido = Partido.Create(2, equipos, Convert.ToDateTime("18-06-2014 15:00"), "Manaos");
+                unPartido = Partido.Create(2, equipos, Convert.ToDateTime("2014-06-18 15:00"), "Manaos");
                 unPartido.SetGolesPorEquipo(4, 0);
                 unPartido.SetGolesPorEquipo(2, 0);
                 listaDePartidos.Add(unPartido);
@@ -57,7 +57,7 @@ namespace Game.Controllers
                 equipos = new List<Equipo>();
                 equipos.Add(Equipo.Create(4, "Camerun"));
                 equipos.Add(Equipo.Create(1, "Brasil"));
-                unPartido = Partido.Create(2, equipos, Convert.ToDateTime("23-06-2014 17:00"), "Brasilia");
+                unPartido = Partido.Create(2, equipos, Convert.ToDateTime("2014-06-23 17:00"), "Brasilia");
                 unPartido.SetGolesPorEquipo(4, 0);
                 unPartido.SetGolesPorEquipo(1, 0);
                 listaDePartidos.Add(unPartido);
@@ -65,7 +65,7 @@ namespace Game.Controllers
                 equipos = new List<Equipo>();
                 equipos.Add(Equipo.Create(2, "Croacia"));
                 equipos.Add(Equipo.Create(3, "Mexico"));
-                unPartido = Partido.Create(2, equipos, Convert.ToDateTime("23-06-2014 17:00"), "Recife");
+                unPartido = Partido.Create(2, equipos, Convert.ToDateTime("2014-06-23 17:00"), "Recife");
                 unPartido.SetGolesPorEquipo(2, 0);
                 unPartido.SetGolesPorEquipo(3, 0);
                 listaDePartidos.Add(unPartido);
