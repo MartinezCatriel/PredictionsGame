@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Prediccion;
+using Repository.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,14 +12,25 @@ namespace Game.Controllers
     public class ValuesController : ApiController
     {
         // GET api/values
-        public IEnumerable<string> Get()
+
+
+
+        public HttpResponseMessage Get()
         {
-            return new string[] { "value1", "value2" };
+
+            var testrepo = new TestSQLRepo();
+            
+
+            return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
         // GET api/values/5
         public string Get(int id)
         {
+
+            var partidosRepository = new XMLRepository<Partido>(Partido.ToString());
+
+
             return "value";
         }
 

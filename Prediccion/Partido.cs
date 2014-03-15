@@ -29,10 +29,11 @@ namespace Prediccion
             }
         }
         public string Geolocalizacion { get; set; }
+        public int Ponderado { get; set; }
         public Dictionary<int, int> GolesPorEquipo { get; private set; }
         public List<Equipo> Equipos { get; set; }
 
-        private Partido(int id, IEnumerable<Equipo> equipos, DateTime fecha, string geo)
+        private Partido(int id, IEnumerable<Equipo> equipos, DateTime fecha, string geo, int ponderado)
         {
             Id = id;
             Equipos = new List<Equipo>();
@@ -44,11 +45,13 @@ namespace Prediccion
             Fecha = fecha;
             Geolocalizacion = geo;
             GolesPorEquipo = new Dictionary<int, int>();
+            Ponderado = ponderado;
+
         }
 
-        public static Partido Create(int id, IEnumerable<Equipo> equipos, DateTime fecha, string geo)
+        public static Partido Create(int id, IEnumerable<Equipo> equipos, DateTime fecha, string geo, int ponderado)
         {
-            return new Partido(id, equipos, fecha, geo);
+            return new Partido(id, equipos, fecha, geo, ponderado);
         }
 
         public void SetGolesPorEquipo(int equipo, int goles)
@@ -58,6 +61,11 @@ namespace Prediccion
                 throw new Exception("El id del equipo debe ser uno de los participantes del partido");
             }
             GolesPorEquipo[equipo] = goles;
+        }
+
+        public static string ToString()
+        {
+            return "Partido";
         }
     }
 }

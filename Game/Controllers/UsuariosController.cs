@@ -16,7 +16,7 @@ namespace Game.Controllers
             var response = new HttpResponseMessage(HttpStatusCode.OK);
             try
             {
-                var unUsuario = Usuario.Create(Convert.ToInt32(id), "German Gimenez", "FBK");
+                var unUsuario = Usuario.Create(Convert.ToInt32(id), "FBK", "a@a", "$#%G#%#/#(#IFQF$FFWEF");
                 response.Content = new ObjectContent(typeof(Usuario), unUsuario, new JsonMediaTypeFormatter());
             }
             catch (Exception ex)
@@ -33,9 +33,9 @@ namespace Game.Controllers
             try
             {
                 var listaDeUsuarios = new List<Usuario>(2);
-                var unUsuario = Usuario.Create(1, "German Gimenez","FBK");
+                var unUsuario = Usuario.Create(1, "FBK", "a@a", "$#%G#%#/#(#IFQF$FFWEF");
                 listaDeUsuarios.Add(unUsuario);
-                unUsuario = Usuario.Create(2, "Carlos Talarga", "GGL");
+                unUsuario = Usuario.Create(2, "GGL", "a@a", "$#%G#%#/#(#IFQF$FFWEF");
                 listaDeUsuarios.Add(unUsuario);
                 response.Content = new ObjectContent(typeof(List<Usuario>), listaDeUsuarios, new JsonMediaTypeFormatter());
             }
@@ -46,5 +46,15 @@ namespace Game.Controllers
             }
             return response;
         }
+
+        public HttpResponseMessage Post()
+        {
+            return new HttpResponseMessage();
+        }
+    }
+
+    public class NewUsuario
+    {
+
     }
 }

@@ -24,11 +24,16 @@ namespace Game.Controllers
         {
             HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
             var equipos = new List<Equipo>();
-            equipos.Add(Equipo.Create(1, "Argentina"));
+            equipos.Add(Equipo.Create(1, "ARG"));
             equipos.Add(Equipo.Create(2, "Brasil"));
             equipos.Add(Equipo.Create(3, "Uruguay"));
             response.Content = new ObjectContent(typeof(List<Equipo>), equipos, new JsonMediaTypeFormatter()); // new StringContent("{equipoid:1, equiponombre:argentina}");
             return response;
+        }
+
+        public HttpResponseMessage Post()
+        {
+            throw new NotImplementedException();
         }
     }
 }

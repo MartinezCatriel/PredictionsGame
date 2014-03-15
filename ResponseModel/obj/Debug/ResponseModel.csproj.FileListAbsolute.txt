@@ -3,3 +3,13 @@ C:\Users\casa\Desktop\PredictionsGame\ResponseModel\bin\Debug\ResponseModel.pdb
 C:\Users\casa\Desktop\PredictionsGame\ResponseModel\obj\Debug\ResponseModel.csprojResolveAssemblyReference.cache
 C:\Users\casa\Desktop\PredictionsGame\ResponseModel\obj\Debug\ResponseModel.dll
 C:\Users\casa\Desktop\PredictionsGame\ResponseModel\obj\Debug\ResponseModel.pdb
+C:\Users\Nancy\Desktop\PredictionsGame\ResponseModel\bin\Debug\ResponseModel.dll
+C:\Users\Nancy\Desktop\PredictionsGame\ResponseModel\bin\Debug\ResponseModel.pdb
+C:\Users\Nancy\Desktop\PredictionsGame\ResponseModel\obj\Debug\ResponseModel.csprojResolveAssemblyReference.cache
+C:\Users\Nancy\Desktop\PredictionsGame\ResponseModel\obj\Debug\ResponseModel.dll
+C:\Users\Nancy\Desktop\PredictionsGame\ResponseModel\obj\Debug\ResponseModel.pdb
+C:\Users\casa\Desktop\PredictionsGame2\ResponseModel\bin\Debug\ResponseModel.dll
+C:\Users\casa\Desktop\PredictionsGame2\ResponseModel\bin\Debug\ResponseModel.pdb
+C:\Users\casa\Desktop\PredictionsGame2\ResponseModel\obj\Debug\ResponseModel.csprojResolveAssemblyReference.cache
+C:\Users\casa\Desktop\PredictionsGame2\ResponseModel\obj\Debug\ResponseModel.dll
+C:\Users\casa\Desktop\PredictionsGame2\ResponseModel\obj\Debug\ResponseModel.pdb

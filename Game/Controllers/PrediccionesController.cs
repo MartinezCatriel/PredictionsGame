@@ -61,5 +61,25 @@ namespace Game.Controllers
             }
             return response;
         }
+
+        public HttpResponseMessage Post(int partido, int equipo, int goles)
+        {
+            if (partido < 0)
+            {
+
+            }
+            if (equipo < 0)
+            {
+
+            }
+            if (goles < 0)
+            {
+
+            }
+
+            
+
+            return new HttpResponseMessage();
+        }
     }
 }

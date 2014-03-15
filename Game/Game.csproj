@@ -250,6 +250,10 @@
       <Project>{0A3EE39F-0D62-4D0B-AE73-7699FBB0F8C4}</Project>
       <Name>Prediccion</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Repository\Repository.csproj">
+      <Project>{f68f16a9-e509-4c51-968d-8ea252b500c7}</Project>
+      <Name>Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
