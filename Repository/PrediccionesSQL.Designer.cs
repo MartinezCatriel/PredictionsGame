@@ -143,22 +143,6 @@ namespace Repository
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Usuario> Usuarios
-        {
-            get
-            {
-                if ((_Usuarios == null))
-                {
-                    _Usuarios = base.CreateObjectSet<Usuario>("Usuarios");
-                }
-                return _Usuarios;
-            }
-        }
-        private ObjectSet<Usuario> _Usuarios;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<UsuarioPrediccion> UsuarioPrediccions
         {
             get
@@ -171,6 +155,22 @@ namespace Repository
             }
         }
         private ObjectSet<UsuarioPrediccion> _UsuarioPrediccions;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Usuario> Usuarios
+        {
+            get
+            {
+                if ((_Usuarios == null))
+                {
+                    _Usuarios = base.CreateObjectSet<Usuario>("Usuarios");
+                }
+                return _Usuarios;
+            }
+        }
+        private ObjectSet<Usuario> _Usuarios;
 
         #endregion
 
@@ -209,19 +209,19 @@ namespace Repository
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the Usuarios EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToUsuarios(Usuario usuario)
-        {
-            base.AddObject("Usuarios", usuario);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the UsuarioPrediccions EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToUsuarioPrediccions(UsuarioPrediccion usuarioPrediccion)
         {
             base.AddObject("UsuarioPrediccions", usuarioPrediccion);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Usuarios EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToUsuarios(Usuario usuario)
+        {
+            base.AddObject("Usuarios", usuario);
         }
 
         #endregion
@@ -512,12 +512,14 @@ namespace Repository
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="fecha">Initial value of the Fecha property.</param>
         /// <param name="geolocalizacion">Initial value of the Geolocalizacion property.</param>
-        public static Partido CreatePartido(global::System.Int32 id, global::System.DateTime fecha, global::System.String geolocalizacion)
+        /// <param name="ponderado">Initial value of the Ponderado property.</param>
+        public static Partido CreatePartido(global::System.Int32 id, global::System.DateTime fecha, global::System.String geolocalizacion, global::System.Int32 ponderado)
         {
             Partido partido = new Partido();
             partido.Id = id;
             partido.Fecha = fecha;
             partido.Geolocalizacion = geolocalizacion;
+            partido.Ponderado = ponderado;
             return partido;
         }
 
@@ -599,6 +601,30 @@ namespace Repository
         private global::System.String _Geolocalizacion;
         partial void OnGeolocalizacionChanging(global::System.String value);
         partial void OnGeolocalizacionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Ponderado
+        {
+            get
+            {
+                return _Ponderado;
+            }
+            set
+            {
+                OnPonderadoChanging(value);
+                ReportPropertyChanging("Ponderado");
+                _Ponderado = StructuralObject.SetValidValue(value, "Ponderado");
+                ReportPropertyChanged("Ponderado");
+                OnPonderadoChanged();
+            }
+        }
+        private global::System.Int32 _Ponderado;
+        partial void OnPonderadoChanging(global::System.Int32 value);
+        partial void OnPonderadoChanged();
 
         #endregion
 
@@ -857,16 +883,16 @@ namespace Repository
         /// Create a new Usuario object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="nombre">Initial value of the Nombre property.</param>
         /// <param name="email">Initial value of the Email property.</param>
         /// <param name="procedencia">Initial value of the Procedencia property.</param>
-        public static Usuario CreateUsuario(global::System.Int32 id, global::System.String nombre, global::System.String email, global::System.String procedencia)
+        /// <param name="token">Initial value of the Token property.</param>
+        public static Usuario CreateUsuario(global::System.Int32 id, global::System.String email, global::System.String procedencia, global::System.String token)
         {
             Usuario usuario = new Usuario();
             usuario.Id = id;
-            usuario.Nombre = nombre;
             usuario.Email = email;
             usuario.Procedencia = procedencia;
+            usuario.Token = token;
             return usuario;
         }
 
@@ -900,30 +926,6 @@ namespace Repository
         private global::System.Int32 _Id;
         partial void OnIdChanging(global::System.Int32 value);
         partial void OnIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String Nombre
-        {
-            get
-            {
-                return _Nombre;
-            }
-            set
-            {
-                OnNombreChanging(value);
-                ReportPropertyChanging("Nombre");
-                _Nombre = StructuralObject.SetValidValue(value, false, "Nombre");
-                ReportPropertyChanged("Nombre");
-                OnNombreChanged();
-            }
-        }
-        private global::System.String _Nombre;
-        partial void OnNombreChanging(global::System.String value);
-        partial void OnNombreChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -972,6 +974,30 @@ namespace Repository
         private global::System.String _Procedencia;
         partial void OnProcedenciaChanging(global::System.String value);
         partial void OnProcedenciaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Token
+        {
+            get
+            {
+                return _Token;
+            }
+            set
+            {
+                OnTokenChanging(value);
+                ReportPropertyChanging("Token");
+                _Token = StructuralObject.SetValidValue(value, false, "Token");
+                ReportPropertyChanged("Token");
+                OnTokenChanged();
+            }
+        }
+        private global::System.String _Token;
+        partial void OnTokenChanging(global::System.String value);
+        partial void OnTokenChanged();
 
         #endregion
 

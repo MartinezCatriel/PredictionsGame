@@ -23,6 +23,7 @@
     <EntitySetMapping Name="Partidoes">
       <EntityTypeMapping TypeName="PrediccionesSQL.Partido">
         <MappingFragment StoreEntitySet="Partido">
+          <ScalarProperty Name="Ponderado" ColumnName="Ponderado" />
           <ScalarProperty Name="Geolocalizacion" ColumnName="Geolocalizacion" />
           <ScalarProperty Name="Fecha" ColumnName="Fecha" />
           <ScalarProperty Name="Id" ColumnName="Id" />
@@ -38,16 +39,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Usuarios">
-      <EntityTypeMapping TypeName="PrediccionesSQL.Usuario">
-        <MappingFragment StoreEntitySet="Usuario">
-          <ScalarProperty Name="Procedencia" ColumnName="Procedencia" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="UsuarioPrediccions">
       <EntityTypeMapping TypeName="PrediccionesSQL.UsuarioPrediccion">
         <MappingFragment StoreEntitySet="UsuarioPrediccion">
@@ -55,6 +46,16 @@
           <ScalarProperty Name="IdEquipo" ColumnName="IdEquipo" />
           <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
           <ScalarProperty Name="IdPartido" ColumnName="IdPartido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="PrediccionesSQL.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="Procedencia" ColumnName="Procedencia" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -9,15 +9,15 @@
         <EntityTypeShape EntityType="PrediccionesSQL.Equipo" Width="1.5" PointX="20" PointY="14.125" />
         <EntityTypeShape EntityType="PrediccionesSQL.Partido" Width="1.5" PointX="29.375" PointY="13.375" />
         <EntityTypeShape EntityType="PrediccionesSQL.PartidoEquipo" Width="1.5" PointX="25.375" PointY="5.875" />
-        <EntityTypeShape EntityType="PrediccionesSQL.Usuario" Width="1.5" PointX="13.875" PointY="15.375" />
         <EntityTypeShape EntityType="PrediccionesSQL.UsuarioPrediccion" Width="1.5" PointX="20.5" PointY="21.25" />
         <AssociationConnector Association="PrediccionesSQL.FK_PartidoEquipo_ToEquipo" />
         <AssociationConnector Association="PrediccionesSQL.FK_UsuarioPrediccion_ToEquipo" />
         <AssociationConnector Association="PrediccionesSQL.FK_PartidoEquipo_ToPartido" />
         <AssociationConnector Association="PrediccionesSQL.FK_UsuarioPrediccion_ToPartido" />
+        <EntityTypeShape EntityType="PrediccionesSQL.Usuario" Width="1.5" PointX="4.2750203554867863" PointY="9.2194098426119471" />
         <AssociationConnector Association="PrediccionesSQL.FK_UsuarioPrediccion_ToUsuario" />
         <AssociationConnector Association="PrediccionesSQL.UsuarioAnimal" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

@@ -52,5 +52,11 @@ namespace Repository.Repositories
         {
             throw new NotImplementedException();
         }
+
+
+        public void Update(T entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

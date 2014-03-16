@@ -64,6 +64,7 @@
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Fecha" Type="datetime" Nullable="false" />
           <Property Name="Geolocalizacion" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="Ponderado" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="PartidoEquipo">
           <Key>
@@ -79,9 +80,9 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="600" />
           <Property Name="Email" Type="varchar" Nullable="false" MaxLength="600" />
           <Property Name="Procedencia" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Token" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="UsuarioAnimal">
           <Key>
@@ -195,7 +196,6 @@
           <EntitySet Name="Equipoes" EntityType="PrediccionesSQL.Equipo" />
           <EntitySet Name="Partidoes" EntityType="PrediccionesSQL.Partido" />
           <EntitySet Name="PartidoEquipoes" EntityType="PrediccionesSQL.PartidoEquipo" />
-          <EntitySet Name="Usuarios" EntityType="PrediccionesSQL.Usuario" />
           <EntitySet Name="UsuarioPrediccions" EntityType="PrediccionesSQL.UsuarioPrediccion" />
           <AssociationSet Name="FK_PartidoEquipo_ToEquipo" Association="PrediccionesSQL.FK_PartidoEquipo_ToEquipo">
             <End Role="Equipo" EntitySet="Equipoes" />
@@ -213,6 +213,7 @@
             <End Role="Partido" EntitySet="Partidoes" />
             <End Role="UsuarioPrediccion" EntitySet="UsuarioPrediccions" />
           </AssociationSet>
+          <EntitySet Name="Usuarios" EntityType="PrediccionesSQL.Usuario" />
           <AssociationSet Name="FK_UsuarioPrediccion_ToUsuario" Association="PrediccionesSQL.FK_UsuarioPrediccion_ToUsuario">
             <End Role="Usuario" EntitySet="Usuarios" />
             <End Role="UsuarioPrediccion" EntitySet="UsuarioPrediccions" />
@@ -221,7 +222,7 @@
             <End Role="Animal" EntitySet="Animals" />
             <End Role="Usuario" EntitySet="Usuarios" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="Animal">
           <Key>
             <PropertyRef Name="Id" />
@@ -249,6 +250,7 @@
           <Property Type="String" Name="Geolocalizacion" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="PartidoEquipoes" Relationship="PrediccionesSQL.FK_PartidoEquipo_ToPartido" FromRole="Partido" ToRole="PartidoEquipo" />
           <NavigationProperty Name="UsuarioPrediccions" Relationship="PrediccionesSQL.FK_UsuarioPrediccion_ToPartido" FromRole="Partido" ToRole="UsuarioPrediccion" />
+          <Property Type="Int32" Name="Ponderado" Nullable="false" />
         </EntityType>
         <EntityType Name="PartidoEquipo">
           <Key>
@@ -260,17 +262,6 @@
           <Property Type="Int32" Name="Goles" Nullable="false" />
           <NavigationProperty Name="Equipo" Relationship="PrediccionesSQL.FK_PartidoEquipo_ToEquipo" FromRole="PartidoEquipo" ToRole="Equipo" />
           <NavigationProperty Name="Partido" Relationship="PrediccionesSQL.FK_PartidoEquipo_ToPartido" FromRole="PartidoEquipo" ToRole="Partido" />
-        </EntityType>
-        <EntityType Name="Usuario">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="600" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Email" Nullable="false" MaxLength="600" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Procedencia" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="UsuarioPrediccions" Relationship="PrediccionesSQL.FK_UsuarioPrediccion_ToUsuario" FromRole="Usuario" ToRole="UsuarioPrediccion" />
-          <NavigationProperty Name="Animals" Relationship="PrediccionesSQL.UsuarioAnimal" FromRole="Usuario" ToRole="Animal" />
         </EntityType>
         <EntityType Name="UsuarioPrediccion">
           <Key>
@@ -334,6 +325,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="600" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Procedencia" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Token" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UsuarioPrediccions" Relationship="PrediccionesSQL.FK_UsuarioPrediccion_ToUsuario" FromRole="Usuario" ToRole="UsuarioPrediccion" />
+          <NavigationProperty Name="Animals" Relationship="PrediccionesSQL.UsuarioAnimal" FromRole="Usuario" ToRole="Animal" />
+        </EntityType>
         <Association Name="FK_UsuarioPrediccion_ToUsuario">
           <End Type="PrediccionesSQL.Usuario" Role="Usuario" Multiplicity="1" />
           <End Type="PrediccionesSQL.UsuarioPrediccion" Role="UsuarioPrediccion" Multiplicity="*" />
@@ -378,6 +380,7 @@
           <EntitySetMapping Name="Partidoes">
             <EntityTypeMapping TypeName="PrediccionesSQL.Partido">
               <MappingFragment StoreEntitySet="Partido">
+                <ScalarProperty Name="Ponderado" ColumnName="Ponderado" />
                 <ScalarProperty Name="Geolocalizacion" ColumnName="Geolocalizacion" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -393,16 +396,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Usuarios">
-            <EntityTypeMapping TypeName="PrediccionesSQL.Usuario">
-              <MappingFragment StoreEntitySet="Usuario">
-                <ScalarProperty Name="Procedencia" ColumnName="Procedencia" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="UsuarioPrediccions">
             <EntityTypeMapping TypeName="PrediccionesSQL.UsuarioPrediccion">
               <MappingFragment StoreEntitySet="UsuarioPrediccion">
@@ -410,6 +403,16 @@
                 <ScalarProperty Name="IdEquipo" ColumnName="IdEquipo" />
                 <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
                 <ScalarProperty Name="IdPartido" ColumnName="IdPartido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="PrediccionesSQL.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="Procedencia" ColumnName="Procedencia" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

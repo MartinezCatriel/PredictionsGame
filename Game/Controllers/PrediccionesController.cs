@@ -52,6 +52,11 @@ namespace Game.Controllers
                 unaPrediccion = UsuarioPrediccion.Create(1, 2, golesPorEquipos);
                 listaDePrediccionesPorUsuario.Add(unaPrediccion);
 
+                golesPorEquipos = new Dictionary<int, int>(2) { { 3, 0 }, { 1, 0 } };
+                unaPrediccion = UsuarioPrediccion.Create(1, 2, golesPorEquipos);
+                listaDePrediccionesPorUsuario.Add(unaPrediccion);
+
+
                 response.Content = new ObjectContent(typeof(List<UsuarioPrediccion>), listaDePrediccionesPorUsuario, new JsonMediaTypeFormatter());
             }
             catch (Exception ex)

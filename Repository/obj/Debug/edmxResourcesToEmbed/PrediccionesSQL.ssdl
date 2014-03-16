@@ -59,6 +59,7 @@
     <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Fecha" Type="datetime" Nullable="false" />
     <Property Name="Geolocalizacion" Type="varchar" Nullable="false" MaxLength="500" />
+    <Property Name="Ponderado" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="PartidoEquipo">
     <Key>
@@ -74,9 +75,9 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="600" />
     <Property Name="Email" Type="varchar" Nullable="false" MaxLength="600" />
     <Property Name="Procedencia" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Token" Type="varchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="UsuarioAnimal">
     <Key>

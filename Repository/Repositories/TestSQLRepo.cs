@@ -12,35 +12,82 @@ namespace Repository.Repositories
     {
         public TestSQLRepo()
         {
+            using (var ctx = new PrediccionesSQLContainer())
+            {
+                var repo = new SQLRepository(ctx);
+                var equipos = repo.GetAll<Equipo>();
+                var listdeequipos = equipos.ToList();
+                foreach (var listdeequipo in listdeequipos)
+                {
+                    int id = listdeequipo.Id;
+                    if (id != 0)
+                    {
+
+                    }
+                }
+            }
+            /*
             //equipo
             using (var ctx = new PrediccionesSQLContainer())
             {
-                var repo = new SQLRepository<Equipo>(ctx);
+                var repo = new SQLRepository(ctx);
+
+
+
+                //var repoEquipos = new SQLRepositoryByEntityType<Equipo>(ctx);
                 var newequipo = new Equipo();
                 newequipo.Nombre = "Brasil";
+                //repoEquipos.Insert(newequipo);
                 repo.Insert(newequipo);
-                var equipoById = repo.SearchFor(equipo => (equipo.Id == 1));
-                equipoById.ToList();
-
-
-
+                //var equipoById = repo.SearchFor(equipo => (equipo.Id == 1));
+                //equipoById.ToList();
                 newequipo = new Equipo();
                 newequipo.Nombre = "Croacia";
                 repo.Insert(newequipo);
-                ctx.SaveChanges(SaveOptions.DetectChangesBeforeSave);
+                //repoEquipos.Insert(newequipo);
+
+
+
+                ctx.SaveChanges();
             }
 
             //partido
-            /*using (var ctx = new PrediccionesSQLContainer())
+            using (var ctx = new PrediccionesSQLContainer())
             {
-                var repo = new SQLRepository<Partido>(ctx);
+                var repo = new SQLRepository(ctx);
                 var newpartido = new Partido();
                 newpartido.Fecha = Convert.ToDateTime("2014-06-12 17:00");
                 newpartido.Geolocalizacion = "San Pablo";
+                newpartido.Ponderado = 60;
                 repo.Insert(newpartido);
+                var newPartidoEquipo = new PartidoEquipo();
+                newPartidoEquipo.IdPartido = 1;
+                newPartidoEquipo.IdEquipo = 6;
+                newPartidoEquipo.Goles = 0;
+                repo.Insert(newPartidoEquipo);
+                newPartidoEquipo = new PartidoEquipo();
+                newPartidoEquipo.IdPartido = 1;
+                newPartidoEquipo.IdEquipo = 7;
+                newPartidoEquipo.Goles = 0;
+                repo.Insert(newPartidoEquipo);
+
                 ctx.SaveChanges(SaveOptions.DetectChangesBeforeSave);
             }
+            */
 
+            using (var ctx = new PrediccionesSQLContainer())
+            {
+                var repo = new SQLRepository(ctx);
+                var newPartidoEquipo = new PartidoEquipo();
+                newPartidoEquipo.IdPartido = 1;
+                newPartidoEquipo.IdEquipo = 6;
+                newPartidoEquipo.Goles = 1;
+                repo.Insert(newPartidoEquipo);
+
+
+                ctx.SaveChanges(SaveOptions.DetectChangesBeforeSave);
+            }
+            /*
             //partidoequipo
             using (var ctx = new PrediccionesSQLContainer())
             {

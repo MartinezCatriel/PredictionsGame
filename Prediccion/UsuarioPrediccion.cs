@@ -10,6 +10,8 @@ namespace Prediccion
     {
         public int IdPartido { get; set; }
         public int IdUsuario { get; set; }
+
+        public int Predecido { get; set; }
         /// <summary>
         /// key=equipo
         /// value=goles

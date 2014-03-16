@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Data.Objects;
 using System.Linq;
 using System.Text;
@@ -8,33 +7,17 @@ using System.Threading.Tasks;
 
 namespace Repository.Repositories
 {
-    public class SQLRepositoryException : Exception
+    public class SQLRepository : IRepository
     {
-        public SQLRepositoryException()
-            : base()
-        { }
-
-        public SQLRepositoryException(string message)
-            : base(message)
-        { }
-
-        public SQLRepositoryException(string message, Exception innerException)
-            : base(message, innerException)
-        { }
-
-        public void LogError()
-        { }
-    }
-
-    public class SQLRepository<T> : IRepository<T> where T : class
-    {
-        ObjectSet<T> Context;
+        private ObjectContext Context { get; set; }
 
         public SQLRepository(ObjectContext context)
         {
+
             try
             {
-                Context = context.CreateObjectSet<T>();
+                //Context = context.CreateObjectSet();
+                Context = context;
             }
             catch (Exception ex)
             {
@@ -42,24 +25,35 @@ namespace Repository.Repositories
             }
         }
 
-        public void Insert(T entity)
+        public void Insert<T>(T entity) where T : class
         {
-            Context.AddObject(entity);
+            ObjectSetFromContext<T>().AddObject(entity);
         }
 
-        public void Delete(T entity)
+        public void Delete<T>(T entity) where T : class
         {
-            Context.DeleteObject(entity);
+            ObjectSetFromContext<T>().DeleteObject(entity);
         }
 
-        public IQueryable<T> SearchFor(System.Linq.Expressions.Expression<Func<T, bool>> predicate)
+        public IQueryable<T> SearchFor<T>(System.Linq.Expressions.Expression<Func<T, bool>> predicate) where T : class
         {
-            return Context.Where(predicate);
+            return ObjectSetFromContext<T>().Where(predicate);
         }
 
-        public IQueryable<T> GetAll()
+        public IQueryable<T> GetAll<T>() where T : class
         {
-            return Context;
+            return ObjectSetFromContext<T>();
+        }
+
+        public ObjectSet<T> ObjectSetFromContext<T>() where T : class
+        {
+            return Context.CreateObjectSet<T>();
+        }
+
+
+        public void Update<T>(T entity) where T : class
+        {
+            ObjectSetFromContext<T>().ApplyCurrentValues(entity);
         }
     }
 }

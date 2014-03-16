@@ -28,7 +28,7 @@ namespace Game.Controllers
         public string Get(int id)
         {
 
-            var partidosRepository = new XMLRepository<Partido>(Partido.ToString());
+            
 
 
             return "value";
