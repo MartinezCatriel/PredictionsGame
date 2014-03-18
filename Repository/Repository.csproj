@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntitiesRepository\PartidoRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="PrediccionesSQL.Designer.cs">
       <AutoGen>True</AutoGen>
