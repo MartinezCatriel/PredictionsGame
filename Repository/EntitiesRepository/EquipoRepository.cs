@@ -30,5 +30,18 @@ namespace Repository.EntitiesRepository
             return equipo;
         }
 
+        public void Update(int idequipo, string nombre)
+        {
+            using (var ctx = new PrediccionesSQLContainer())
+            {
+                var response = (from e in ctx.Equipoes where e.Id == idequipo select e);
+                var equipo = response.ToList().FirstOrDefault();
+                if (equipo != null)
+                {
+                    equipo.Nombre = nombre;
+                    ctx.SaveChanges();
+                }
+            }
+        }
     }
 }

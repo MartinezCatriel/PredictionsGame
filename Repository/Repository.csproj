@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntitiesRepository\EquipoRepository.cs" />
-    <Compile Include="EntitiesRepository\PartidoEquipo.cs" />
+    <Compile Include="EntitiesRepository\PartidoEquipoRepository.cs" />
     <Compile Include="EntitiesRepository\PartidoRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="PrediccionesSDF.Designer.cs">
