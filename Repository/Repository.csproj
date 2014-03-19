@@ -46,8 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntitiesRepository\EquipoRepository.cs" />
+    <Compile Include="EntitiesRepository\PartidoEquipo.cs" />
     <Compile Include="EntitiesRepository\PartidoRepository.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="PrediccionesSDF.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrediccionesSDF.edmx</DependentUpon>
+    </Compile>
     <Compile Include="PrediccionesSQL.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -66,6 +73,13 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>PrediccionesSQL.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="PrediccionesSDF.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PrediccionesSDF.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="PrediccionesSDF.edmx.diagram">
+      <DependentUpon>PrediccionesSDF.edmx</DependentUpon>
+    </None>
     <None Include="PrediccionesSQL.edmx.diagram">
       <DependentUpon>PrediccionesSQL.edmx</DependentUpon>
     </None>

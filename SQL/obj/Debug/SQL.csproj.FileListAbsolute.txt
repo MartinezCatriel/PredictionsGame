@@ -28,3 +28,4 @@ C:\Users\casa\Desktop\PredictionsGame\SQL\bin\Debug\EntityFramework.xml
 C:\Users\casa\Desktop\PredictionsGame\SQL\obj\Debug\SQL.csprojResolveAssemblyReference.cache
 C:\Users\casa\Desktop\PredictionsGame\SQL\obj\Debug\SQL.dll
 C:\Users\casa\Desktop\PredictionsGame\SQL\obj\Debug\SQL.pdb
+C:\Users\casa\Desktop\PredictionsGame\SQL\bin\Debug\PrediccionesSDF.sdf

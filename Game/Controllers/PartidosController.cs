@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Web.Http;
+using Repository.EntitiesRepository;
 using PartidoPrediccion = Prediccion.Partido;
 namespace Game.Controllers
 {
@@ -97,6 +98,31 @@ namespace Game.Controllers
             var response = new HttpResponseMessage(HttpStatusCode.OK);
             try
             {
+                Prediccion.Partido unPartido;
+
+                var equipos = new List<Equipo>();
+                equipos.Add(Equipo.Create(1, "Brasil"));
+                equipos.Add(Equipo.Create(2, "Croacia"));
+                unPartido = Prediccion.Partido.Create(1, equipos, DateTime.Now, "San Pablo", 80);
+                unPartido.SetGolesPorEquipo(1, 0);
+                unPartido.SetGolesPorEquipo(2, 0);
+                response.Content = new ObjectContent(typeof(Partido), unPartido, new JsonMediaTypeFormatter());
+            }
+            catch (Exception ex)
+            {
+                response.Content = new ObjectContent(typeof(string), ex.Message, new JsonMediaTypeFormatter());
+            }
+            return response;
+        }
+
+        public HttpResponseMessage Get(int idEquipo)
+        {
+            var response = new HttpResponseMessage(HttpStatusCode.OK);
+            try
+            {
+                var repo = new PartidoRepository();
+
+                //repo.GetAllByPartidoId();
                 Prediccion.Partido unPartido;
 
                 var equipos = new List<Equipo>();
