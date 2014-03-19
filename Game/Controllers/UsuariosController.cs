@@ -26,7 +26,7 @@ namespace Game.Controllers
             }
             catch (Exception ex)
             {
-                response.Content = new ObjectContent(typeof(string), "Error con el usuario", new JsonMediaTypeFormatter());
+                response.Content = new ObjectContent(typeof(string), "Error al obtener el usuario. Error:" + ex.Message + "Stack:" + ex.StackTrace, new JsonMediaTypeFormatter());
                 return response;
             }
             return response;
@@ -49,7 +49,7 @@ namespace Game.Controllers
             }
             catch (Exception ex)
             {
-                response.Content = new ObjectContent(typeof(string), "Error los usuarios", new JsonMediaTypeFormatter());
+                response.Content = new ObjectContent(typeof(string), "Error al obtener los usuarios. Error:" + ex.Message + "Stack:" + ex.StackTrace, new JsonMediaTypeFormatter());
                 return response;
             }
             return response;
@@ -67,10 +67,11 @@ namespace Game.Controllers
                 var usuRTN = usuMapper.MapperUsuario(usufromrepo);
                 response.Content = new ObjectContent(typeof(Usuario), usuRTN, new JsonMediaTypeFormatter());
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                response.Content = new ObjectContent(typeof(string), "Error al obtener los usuarios. Error:" + ex.Message + "Stack:" + ex.StackTrace, new JsonMediaTypeFormatter());
+                return response;
             }
             return response;
         }
