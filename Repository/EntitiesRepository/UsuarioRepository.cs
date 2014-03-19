@@ -10,6 +10,7 @@ namespace Repository.EntitiesRepository
     {
         public List<Usuario> GetAll()
         {
+
             var rtn = new List<Usuario>();
             using (var ctx = new PrediccionesSQLContainer())
             {
@@ -24,9 +25,19 @@ namespace Repository.EntitiesRepository
             Usuario newUsu = null;
             using (var ctx = new PrediccionesSQLContainer())
             {
-                newUsu = new Usuario() { Email = email, Procedencia = procedencia, Token = token };
-                ctx.Usuarios.AddObject(newUsu);
-
+                var response = (from u in ctx.Usuarios where u.Token == token select u);
+                var usu = response.ToList().FirstOrDefault();
+                if (usu == null)
+                {
+                    newUsu = new Usuario() { Email = email, Procedencia = procedencia, Token = token };
+                    ctx.Usuarios.AddObject(newUsu);
+                }
+                else
+                {
+                    usu.Email = email;
+                    usu.Procedencia = procedencia;
+                    newUsu = usu;
+                }
                 ctx.SaveChanges();
             }
             return newUsu;

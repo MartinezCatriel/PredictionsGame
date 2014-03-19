@@ -6,18 +6,23 @@ using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Web.Http;
 using Prediccion;
+using Repository.EntitiesRepository;
+using Game.RepositoryMapper;
 
 namespace Game.Controllers
 {
     public class UsuariosController : ApiController
     {
-        public HttpResponseMessage Get(string id)
+        public HttpResponseMessage Get(int id)
         {
             var response = new HttpResponseMessage(HttpStatusCode.OK);
             try
             {
-                var unUsuario = Usuario.Create(Convert.ToInt32(id), "FBK", "a@a", "$#%G#%#/#(#IFQF$FFWEF");
-                response.Content = new ObjectContent(typeof(Usuario), unUsuario, new JsonMediaTypeFormatter());
+
+                var repoUsu = new UsuarioRepository();
+                var usuMapper = new UsuarioMapper();
+                var usuRTN = usuMapper.MapperUsuario(repoUsu.GetById(id));
+                response.Content = new ObjectContent(typeof(Usuario), usuRTN, new JsonMediaTypeFormatter());
             }
             catch (Exception ex)
             {
@@ -32,11 +37,14 @@ namespace Game.Controllers
             var response = new HttpResponseMessage(HttpStatusCode.OK);
             try
             {
-                var listaDeUsuarios = new List<Usuario>(2);
+                /*var listaDeUsuarios = new List<Usuario>(2);
                 var unUsuario = Usuario.Create(1, "FBK", "a@a", "$#%G#%#/#(#IFQF$FFWEF");
                 listaDeUsuarios.Add(unUsuario);
                 unUsuario = Usuario.Create(2, "GGL", "a@a", "$#%G#%#/#(#IFQF$FFWEF");
-                listaDeUsuarios.Add(unUsuario);
+                listaDeUsuarios.Add(unUsuario);*/
+                var repoUsu = new UsuarioRepository();
+                var usuMapper = new UsuarioMapper();
+                var listaDeUsuarios = usuMapper.MapperUsuarios(repoUsu.GetAll());
                 response.Content = new ObjectContent(typeof(List<Usuario>), listaDeUsuarios, new JsonMediaTypeFormatter());
             }
             catch (Exception ex)
@@ -47,14 +55,29 @@ namespace Game.Controllers
             return response;
         }
 
-        public HttpResponseMessage Post()
+        public HttpResponseMessage Post(NewUsuario newU)
         {
-            return new HttpResponseMessage();
+            var response = new HttpResponseMessage(HttpStatusCode.OK);
+
+            try
+            {
+                var repoUsu = new UsuarioRepository();
+                var usuMapper = new UsuarioMapper();
+                var usufromrepo = repoUsu.Insert("email", "FBK", newU.token);
+                var usuRTN = usuMapper.MapperUsuario(usufromrepo);
+                response.Content = new ObjectContent(typeof(Usuario), usuRTN, new JsonMediaTypeFormatter());
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return response;
         }
     }
 
     public class NewUsuario
     {
-
+        public string token { get; set; }
     }
 }

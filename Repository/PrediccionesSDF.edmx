@@ -5,43 +5,19 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="PrediccionesSDFModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="PrediccionesSDFModelStoreContainer">
-          <EntitySet Name="Usuario" EntityType="PrediccionesSDFModel.Store.Usuario" store:Type="Tables" />
-        </EntityContainer>
-        <EntityType Name="Usuario">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-        </EntityType>
+        <EntityContainer Name="PrediccionesSDFModelStoreContainer" />
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PrediccionesSDFModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="PrediccionesSDFEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="Usuario" EntityType="PrediccionesSDFModel.Usuario" />
-        </EntityContainer>
-        <EntityType Name="Usuario">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-        </EntityType>
+        <EntityContainer Name="PrediccionesSDFEntities1" p1:LazyLoadingEnabled="true" />
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="PrediccionesSDFModelStoreContainer" CdmEntityContainer="PrediccionesSDFEntities">
-          <EntitySetMapping Name="Usuario">
-            <EntityTypeMapping TypeName="PrediccionesSDFModel.Usuario">
-              <MappingFragment StoreEntitySet="Usuario">
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
+        <EntityContainerMapping StorageEntityContainer="PrediccionesSDFModelStoreContainer" CdmEntityContainer="PrediccionesSDFEntities1" />
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -57,7 +33,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

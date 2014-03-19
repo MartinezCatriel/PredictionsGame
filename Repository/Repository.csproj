@@ -49,6 +49,8 @@
     <Compile Include="EntitiesRepository\EquipoRepository.cs" />
     <Compile Include="EntitiesRepository\PartidoEquipoRepository.cs" />
     <Compile Include="EntitiesRepository\PartidoRepository.cs" />
+    <Compile Include="EntitiesRepository\UsuarioPrediccionRepository.cs" />
+    <Compile Include="EntitiesRepository\UsuarioRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="PrediccionesSDF.Designer.cs">
       <AutoGen>True</AutoGen>
