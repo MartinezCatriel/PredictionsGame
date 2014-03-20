@@ -20,11 +20,11 @@ using System.Xml.Serialization;
 #region EDM Relationship Metadata
 
 [assembly: EdmRelationshipAttribute("PrediccionesSQL", "FK_PartidoEquipo_ToEquipo", "Equipo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Repository.Equipo), "PartidoEquipo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.PartidoEquipo), true)]
-[assembly: EdmRelationshipAttribute("PrediccionesSQL", "FK_UsuarioPrediccion_ToEquipo", "Equipo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Repository.Equipo), "UsuarioPrediccion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.UsuarioPrediccion), true)]
 [assembly: EdmRelationshipAttribute("PrediccionesSQL", "FK_PartidoEquipo_ToPartido", "Partido", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Repository.Partido), "PartidoEquipo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.PartidoEquipo), true)]
+[assembly: EdmRelationshipAttribute("PrediccionesSQL", "UsuarioAnimal", "Animal", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.Animal), "Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.Usuario))]
+[assembly: EdmRelationshipAttribute("PrediccionesSQL", "FK_UsuarioPrediccion_ToEquipo", "Equipo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Repository.Equipo), "UsuarioPrediccion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.UsuarioPrediccion), true)]
 [assembly: EdmRelationshipAttribute("PrediccionesSQL", "FK_UsuarioPrediccion_ToPartido", "Partido", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Repository.Partido), "UsuarioPrediccion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.UsuarioPrediccion), true)]
 [assembly: EdmRelationshipAttribute("PrediccionesSQL", "FK_UsuarioPrediccion_ToUsuario", "Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Repository.Usuario), "UsuarioPrediccion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.UsuarioPrediccion), true)]
-[assembly: EdmRelationshipAttribute("PrediccionesSQL", "UsuarioAnimal", "Animal", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.Animal), "Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.Usuario))]
 
 #endregion
 
@@ -143,22 +143,6 @@ namespace Repository
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<UsuarioPrediccion> UsuarioPrediccions
-        {
-            get
-            {
-                if ((_UsuarioPrediccions == null))
-                {
-                    _UsuarioPrediccions = base.CreateObjectSet<UsuarioPrediccion>("UsuarioPrediccions");
-                }
-                return _UsuarioPrediccions;
-            }
-        }
-        private ObjectSet<UsuarioPrediccion> _UsuarioPrediccions;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<Usuario> Usuarios
         {
             get
@@ -171,6 +155,22 @@ namespace Repository
             }
         }
         private ObjectSet<Usuario> _Usuarios;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<UsuarioPrediccion> UsuarioPrediccions
+        {
+            get
+            {
+                if ((_UsuarioPrediccions == null))
+                {
+                    _UsuarioPrediccions = base.CreateObjectSet<UsuarioPrediccion>("UsuarioPrediccions");
+                }
+                return _UsuarioPrediccions;
+            }
+        }
+        private ObjectSet<UsuarioPrediccion> _UsuarioPrediccions;
 
         #endregion
 
@@ -209,19 +209,19 @@ namespace Repository
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the UsuarioPrediccions EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToUsuarioPrediccions(UsuarioPrediccion usuarioPrediccion)
-        {
-            base.AddObject("UsuarioPrediccions", usuarioPrediccion);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the Usuarios EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToUsuarios(Usuario usuario)
         {
             base.AddObject("Usuarios", usuario);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the UsuarioPrediccions EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToUsuarioPrediccions(UsuarioPrediccion usuarioPrediccion)
+        {
+            base.AddObject("UsuarioPrediccions", usuarioPrediccion);
         }
 
         #endregion
@@ -1009,28 +1009,6 @@ namespace Repository
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("PrediccionesSQL", "FK_UsuarioPrediccion_ToUsuario", "UsuarioPrediccion")]
-        public EntityCollection<UsuarioPrediccion> UsuarioPrediccions
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<UsuarioPrediccion>("PrediccionesSQL.FK_UsuarioPrediccion_ToUsuario", "UsuarioPrediccion");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UsuarioPrediccion>("PrediccionesSQL.FK_UsuarioPrediccion_ToUsuario", "UsuarioPrediccion", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("PrediccionesSQL", "UsuarioAnimal", "Animal")]
         public EntityCollection<Animal> Animals
         {
@@ -1043,6 +1021,28 @@ namespace Repository
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Animal>("PrediccionesSQL.UsuarioAnimal", "Animal", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("PrediccionesSQL", "FK_UsuarioPrediccion_ToUsuario", "UsuarioPrediccion")]
+        public EntityCollection<UsuarioPrediccion> UsuarioPrediccions
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<UsuarioPrediccion>("PrediccionesSQL.FK_UsuarioPrediccion_ToUsuario", "UsuarioPrediccion");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UsuarioPrediccion>("PrediccionesSQL.FK_UsuarioPrediccion_ToUsuario", "UsuarioPrediccion", value);
                 }
             }
         }
@@ -1068,13 +1068,15 @@ namespace Repository
         /// <param name="idUsuario">Initial value of the IdUsuario property.</param>
         /// <param name="idEquipo">Initial value of the IdEquipo property.</param>
         /// <param name="goles">Initial value of the Goles property.</param>
-        public static UsuarioPrediccion CreateUsuarioPrediccion(global::System.Int32 idPartido, global::System.Int32 idUsuario, global::System.Int32 idEquipo, global::System.Int32 goles)
+        /// <param name="predecido">Initial value of the Predecido property.</param>
+        public static UsuarioPrediccion CreateUsuarioPrediccion(global::System.Int32 idPartido, global::System.Int32 idUsuario, global::System.Int32 idEquipo, global::System.Int32 goles, global::System.Int32 predecido)
         {
             UsuarioPrediccion usuarioPrediccion = new UsuarioPrediccion();
             usuarioPrediccion.IdPartido = idPartido;
             usuarioPrediccion.IdUsuario = idUsuario;
             usuarioPrediccion.IdEquipo = idEquipo;
             usuarioPrediccion.Goles = goles;
+            usuarioPrediccion.Predecido = predecido;
             return usuarioPrediccion;
         }
 
@@ -1186,6 +1188,30 @@ namespace Repository
         private global::System.Int32 _Goles;
         partial void OnGolesChanging(global::System.Int32 value);
         partial void OnGolesChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Predecido
+        {
+            get
+            {
+                return _Predecido;
+            }
+            set
+            {
+                OnPredecidoChanging(value);
+                ReportPropertyChanging("Predecido");
+                _Predecido = StructuralObject.SetValidValue(value, "Predecido");
+                ReportPropertyChanged("Predecido");
+                OnPredecidoChanged();
+            }
+        }
+        private global::System.Int32 _Predecido;
+        partial void OnPredecidoChanging(global::System.Int32 value);
+        partial void OnPredecidoChanged();
 
         #endregion
 

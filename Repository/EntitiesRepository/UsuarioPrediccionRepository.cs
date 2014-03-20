@@ -19,6 +19,17 @@ namespace Repository.EntitiesRepository
             return rtn;
         }
 
+        public List<UsuarioPrediccion> GetByUsuarioIdAndPartidoId(int idUsuario, int idPartido)
+        {
+            var rtn = new List<UsuarioPrediccion>();
+            using (var ctx = new PrediccionesSQLContainer())
+            {
+                var response = (from up in ctx.UsuarioPrediccions.Include("Equipo").Include("Partido").Include("Usuario") where up.IdUsuario == idUsuario && up.IdPartido == idPartido select up);
+                rtn.AddRange(response.ToList());
+            }
+            return rtn;
+        }
+
         public void Insert(int idpartido, int idusaurio, int idequipo, int goles)
         {
             using (var ctx = new PrediccionesSQLContainer())

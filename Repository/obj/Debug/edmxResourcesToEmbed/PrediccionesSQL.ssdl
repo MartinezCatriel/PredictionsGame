@@ -97,6 +97,7 @@
     <Property Name="IdUsuario" Type="int" Nullable="false" />
     <Property Name="IdEquipo" Type="int" Nullable="false" />
     <Property Name="Goles" Type="int" Nullable="false" />
+    <Property Name="Predecido" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_PartidoEquipo_ToEquipo">
     <End Role="Equipo" Type="PrediccionesSQL.Store.Equipo" Multiplicity="1" />

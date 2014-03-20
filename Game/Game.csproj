@@ -136,6 +136,7 @@
     <Compile Include="RepositoryMapper\EquipoMapper.cs" />
     <Compile Include="RepositoryMapper\PartidoMapper.cs" />
     <Compile Include="RepositoryMapper\UsuarioMapper.cs" />
+    <Compile Include="RepositoryMapper\UsuarioPrediccionMapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />

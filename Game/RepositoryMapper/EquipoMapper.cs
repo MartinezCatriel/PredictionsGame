@@ -7,5 +7,6 @@ namespace Game.RepositoryMapper
 {
     public class EquipoMapper
     {
+        public Equipo 
     }
 }

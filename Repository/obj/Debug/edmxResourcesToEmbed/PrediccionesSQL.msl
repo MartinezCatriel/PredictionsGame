@@ -39,16 +39,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="UsuarioPrediccions">
-      <EntityTypeMapping TypeName="PrediccionesSQL.UsuarioPrediccion">
-        <MappingFragment StoreEntitySet="UsuarioPrediccion">
-          <ScalarProperty Name="Goles" ColumnName="Goles" />
-          <ScalarProperty Name="IdEquipo" ColumnName="IdEquipo" />
-          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
-          <ScalarProperty Name="IdPartido" ColumnName="IdPartido" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Usuarios">
       <EntityTypeMapping TypeName="PrediccionesSQL.Usuario">
         <MappingFragment StoreEntitySet="Usuario">
@@ -67,5 +57,16 @@
         <ScalarProperty Name="Id" ColumnName="IdAnimal" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="UsuarioPrediccions">
+      <EntityTypeMapping TypeName="PrediccionesSQL.UsuarioPrediccion">
+        <MappingFragment StoreEntitySet="UsuarioPrediccion">
+          <ScalarProperty Name="Predecido" ColumnName="Predecido" />
+          <ScalarProperty Name="Goles" ColumnName="Goles" />
+          <ScalarProperty Name="IdEquipo" ColumnName="IdEquipo" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdPartido" ColumnName="IdPartido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

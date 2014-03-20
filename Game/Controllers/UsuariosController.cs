@@ -37,11 +37,6 @@ namespace Game.Controllers
             var response = new HttpResponseMessage(HttpStatusCode.OK);
             try
             {
-                /*var listaDeUsuarios = new List<Usuario>(2);
-                var unUsuario = Usuario.Create(1, "FBK", "a@a", "$#%G#%#/#(#IFQF$FFWEF");
-                listaDeUsuarios.Add(unUsuario);
-                unUsuario = Usuario.Create(2, "GGL", "a@a", "$#%G#%#/#(#IFQF$FFWEF");
-                listaDeUsuarios.Add(unUsuario);*/
                 var repoUsu = new UsuarioRepository();
                 var usuMapper = new UsuarioMapper();
                 var listaDeUsuarios = usuMapper.MapperUsuarios(repoUsu.GetAll());

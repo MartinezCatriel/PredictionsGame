@@ -16,20 +16,23 @@ namespace Prediccion
         /// key=equipo
         /// value=goles
         /// </summary>
+
         public Dictionary<int, int> GolesPorEquipo { get; set; }
 
-        public int Ganador
+        public List<Equipo> Equipos { get; set; }
+
+        public Equipo Ganador
         {
             get
             {
                 var ganador = (from a in GolesPorEquipo orderby a.Value descending select a).FirstOrDefault();
                 if (ganador.Value == 0)//no hay ganador
-                    return ganador.Value;
-                return ganador.Key;
+                    return null;
+                return Equipos.Find((item) => { return item.Id == ganador.Key; });
             }
         }
 
-        private UsuarioPrediccion(int idPartido, int idUsuario, Dictionary<int, int> golesPorEquipo)
+        private UsuarioPrediccion(int idPartido, int idUsuario, Dictionary<Equipo, int> golesPorEquipo, int predecido)
         {
             IdUsuario = idUsuario;
             IdPartido = idPartido;
@@ -42,15 +45,20 @@ namespace Prediccion
             }
 
 
+            GolesPorEquipo = new Dictionary<int, int>(golesPorEquipo.Count);
+            Equipos = new List<Equipo>(golesPorEquipo.Count);
+            foreach (var equipo in golesPorEquipo)
+            {
+                GolesPorEquipo.Add(equipo.Key.Id, equipo.Value);
+                Equipos.Add(equipo.Key);
+            }
 
-            GolesPorEquipo = golesPorEquipo;
+            Predecido = predecido;
         }
 
-        public static UsuarioPrediccion Create(int idPartido, int idUsuario, Dictionary<int, int> golesPorEquipo)
+        public static UsuarioPrediccion Create(int idPartido, int idUsuario, Dictionary<Equipo, int> golesPorEquipo, int predecido)
         {
-            return new UsuarioPrediccion(idPartido, idUsuario, golesPorEquipo);
+            return new UsuarioPrediccion(idPartido, idUsuario, golesPorEquipo, predecido);
         }
-
-
     }
 }
