@@ -21,7 +21,7 @@ namespace Repository.EntitiesRepository
             var all = new List<Partido>();
             using (var ctx = new PrediccionesSQLContainer())
             {
-                var partidos = (from a in ctx.Partidoes select a);
+                var partidos = (from a in ctx.Partidoes.Include("PartidoEquipoes").Include("PartidoEquipoes.Equipo") select a);
                 all.AddRange(partidos.ToList());
             }
             return all;
@@ -42,18 +42,18 @@ namespace Repository.EntitiesRepository
             return all;
         }
 
-        public List<Partido> GetById(int idPartido)
+        public Partido GetById(int idPartido)
         {
-            var all = new List<Partido>();
+            var par = new Partido();
             using (var ctx = new PrediccionesSQLContainer())
             {
-                var pbes = (from s in ctx.Partidoes.Include("PartidoEquipos").Include("PartidoEquipos.Equipo")
+                var pbes = (from s in ctx.Partidoes.Include("PartidoEquipoes").Include("PartidoEquipoes.Equipo")
                             where s.Id == idPartido
                             select s);
-                all.AddRange(pbes.ToList());
+                par = pbes.ToList().FirstOrDefault();
             }
 
-            return all;
+            return par;
         }
 
         public void Update(int idPartido, DateTime fecha, string geo, int ponderado)
@@ -75,6 +75,55 @@ namespace Repository.EntitiesRepository
                         ctx.SaveChanges();
                     }
 
+                }
+            }
+        }
+
+        public void UpdateEquipoGolesByPartidoId(int idPartido, int idEquipo, int goles)
+        {
+            if (idPartido != DefaultIdPartido)
+            {
+                using (var ctx = new PrediccionesSQLContainer())
+                {
+                    var toUpdate = (from p
+                                    in ctx.PartidoEquipoes
+                                    where p.IdPartido == idPartido
+                                    && p.IdEquipo == idEquipo
+                                    select p);
+                    var partido = toUpdate.ToList().FirstOrDefault();
+                    if (partido != null)
+                    {
+                        partido.Goles = goles;
+                        ctx.SaveChanges();
+                    }
+
+                }
+            }
+        }
+
+        public void UpdateEquiposDelPartido(int idPartido, List<int> idEquipos)
+        {
+            if (idPartido != DefaultIdPartido)
+            {
+                using (var ctx = new PrediccionesSQLContainer())
+                {
+                    var toUpdate = (from p
+                                    in ctx.PartidoEquipoes
+                                    where p.IdPartido == idPartido
+                                    select p);
+                    var partidos = toUpdate.ToList();
+
+                    var count = 0;
+                    foreach (var partido in partidos)
+                    {
+                        partido.IdEquipo = idEquipos[count];
+                        count++;
+                    }
+
+                    if (partidos != null && partidos.Count > 0)
+                    {
+                        ctx.SaveChanges();
+                    }
                 }
             }
         }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using RepoUsu = Repository.Usuario;
 using ModelUsu = Prediccion.Usuario;
-namespace Game.RepositoryMapper
+namespace Game.RepositoryMap
 {
-    public class UsuarioMapper
+    public class UsuarioMap
     {
         public ModelUsu MapperUsuario(RepoUsu toMap)
         {

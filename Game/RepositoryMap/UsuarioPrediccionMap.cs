@@ -5,9 +5,9 @@ using System.Web;
 using Prediccion;
 using UsuarioPrediccionMod = Prediccion.UsuarioPrediccion;
 using UsuarioPrediccionSql = Repository.UsuarioPrediccion;
-namespace Game.RepositoryMapper
+namespace Game.RepositoryMap
 {
-    public class UsuarioPrediccionMapper
+    public class UsuarioPrediccionMap
     {
         public List<UsuarioPrediccionMod> MapUsuarioPrediccion(List<UsuarioPrediccionSql> toMap)
         {

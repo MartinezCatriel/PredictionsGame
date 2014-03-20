@@ -25,7 +25,7 @@ namespace Repository.EntitiesRepository
             Usuario newUsu = null;
             using (var ctx = new PrediccionesSQLContainer())
             {
-                var response = (from u in ctx.Usuarios where u.Token == token select u);
+                var response = (from u in ctx.Usuarios where u.Email == email select u);
                 var usu = response.ToList().FirstOrDefault();
                 if (usu == null)
                 {
@@ -34,11 +34,29 @@ namespace Repository.EntitiesRepository
                 }
                 else
                 {
-                    usu.Email = email;
+                    usu.Token = token;
                     usu.Procedencia = procedencia;
                     newUsu = usu;
                 }
                 ctx.SaveChanges();
+            }
+            return newUsu;
+        }
+
+        public Usuario UploadTokenById(int id, string token)
+        {
+            Usuario newUsu = null;
+            using (var ctx = new PrediccionesSQLContainer())
+            {
+                var response = (from u in ctx.Usuarios where u.Id == id select u);
+                var usu = response.ToList().FirstOrDefault();
+                if (usu != null)
+                {
+                    usu.Token = token;
+                    newUsu = usu;
+                    ctx.SaveChanges();
+                }
+
             }
             return newUsu;
         }

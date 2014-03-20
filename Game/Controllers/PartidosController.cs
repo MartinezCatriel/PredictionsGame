@@ -9,6 +9,7 @@ using System.Net.Http.Formatting;
 using System.Web.Http;
 using Repository.EntitiesRepository;
 using PartidoPrediccion = Prediccion.Partido;
+using Game.RepositoryMap;
 namespace Game.Controllers
 {
     public class PartidosController : ApiController
@@ -19,67 +20,19 @@ namespace Game.Controllers
             var response = new HttpResponseMessage(HttpStatusCode.OK);
             try
             {
+                var repoPartidos = new PartidoRepository();
+                var partidoMapper = new PartidoMap();
+                //obtengo todos los partidos de la base de datos
+                var listaDePartidos = partidoMapper.MapPartidos(repoPartidos.GetAll());
                 var partidosPorFecha = new List<PartidosPorFecha>();
-
-                var listaDePartidos = new List<PartidoPrediccion>();
-
-
-
-
-                PartidoPrediccion unPartido;
-                var equipos = new List<Equipo>();
-                equipos.Add(Equipo.Create(1, "BRA"));
-                equipos.Add(Equipo.Create(2, "CRO"));
-                unPartido = PartidoPrediccion.Create(1, equipos, Convert.ToDateTime("2014-06-12 17:00"), "San Pablo", 80);
-                unPartido.SetGolesPorEquipo(1, 0);
-                unPartido.SetGolesPorEquipo(2, 0);
-                listaDePartidos.Add(unPartido);
-
-                equipos = new List<Equipo>();
-                equipos.Add(Equipo.Create(3, "MEX"));
-                equipos.Add(Equipo.Create(4, "CAM"));
-                unPartido = PartidoPrediccion.Create(2, equipos, Convert.ToDateTime("2014-06-13 13:00"), "Natal", 80);
-                unPartido.SetGolesPorEquipo(3, 0);
-                unPartido.SetGolesPorEquipo(4, 0);
-                listaDePartidos.Add(unPartido);
-
-                equipos = new List<Equipo>();
-                equipos.Add(Equipo.Create(1, "BRA"));
-                equipos.Add(Equipo.Create(3, "MEX"));
-                unPartido = PartidoPrediccion.Create(2, equipos, Convert.ToDateTime("2014-06-17 16:00"), "Fortaleza", 80);
-                unPartido.SetGolesPorEquipo(1, 0);
-                unPartido.SetGolesPorEquipo(3, 0);
-                listaDePartidos.Add(unPartido);
-
-                equipos = new List<Equipo>();
-                equipos.Add(Equipo.Create(4, "CAM"));
-                equipos.Add(Equipo.Create(2, "CRO"));
-                unPartido = PartidoPrediccion.Create(2, equipos, Convert.ToDateTime("2014-06-18 15:00"), "Manaos", 80);
-                unPartido.SetGolesPorEquipo(4, 0);
-                unPartido.SetGolesPorEquipo(2, 0);
-                listaDePartidos.Add(unPartido);
-
-                equipos = new List<Equipo>();
-                equipos.Add(Equipo.Create(4, "CAM"));
-                equipos.Add(Equipo.Create(1, "BRA"));
-                unPartido = PartidoPrediccion.Create(2, equipos, Convert.ToDateTime("2014-06-23 17:00"), "Brasilia", 80);
-                unPartido.SetGolesPorEquipo(4, 0);
-                unPartido.SetGolesPorEquipo(1, 0);
-                listaDePartidos.Add(unPartido);
-
-                equipos = new List<Equipo>();
-                equipos.Add(Equipo.Create(2, "CRO"));
-                equipos.Add(Equipo.Create(3, "MEX"));
-                unPartido = PartidoPrediccion.Create(2, equipos, Convert.ToDateTime("2014-06-23 17:00"), "Recife", 80);
-                unPartido.SetGolesPorEquipo(2, 0);
-                unPartido.SetGolesPorEquipo(3, 0);
-                listaDePartidos.Add(unPartido);
-
-
+                //los agrupo por fecha a los objetos de modelo
                 var listas = listaDePartidos.GroupBy((item) => { return item.Fecha.ToShortDateString(); });
+
                 foreach (var lista in listas)
                 {
+                    //por cada grupo de partidos por fecha creo un objeto de retorno
                     var partidos = lista.ToList().ConvertAll((item) => { return new Controllers.Partido() { Equipos = item.Equipos, Ganador = item.Ganador, Ponderado = item.Ponderado, Geolocalizacion = item.Geolocalizacion, GolesPorEquipo = item.GolesPorEquipo, Hora = item.Fecha.ToString("MM:ss tt"), Id = item.Id }; });
+                    //creo un objeto que contenga la fecha y sus partidos
                     var ppf = new PartidosPorFecha() { Fecha = lista.Key, Partidos = partidos };
                     partidosPorFecha.Add(ppf);
                 }
@@ -98,15 +51,11 @@ namespace Game.Controllers
             var response = new HttpResponseMessage(HttpStatusCode.OK);
             try
             {
-                Prediccion.Partido unPartido;
-
-                var equipos = new List<Equipo>();
-                equipos.Add(Equipo.Create(1, "Brasil"));
-                equipos.Add(Equipo.Create(2, "Croacia"));
-                unPartido = Prediccion.Partido.Create(1, equipos, DateTime.Now, "San Pablo", 80);
-                unPartido.SetGolesPorEquipo(1, 0);
-                unPartido.SetGolesPorEquipo(2, 0);
-                response.Content = new ObjectContent(typeof(Partido), unPartido, new JsonMediaTypeFormatter());
+                var repoPartidos = new PartidoRepository();
+                var partidosMap = new PartidoMap();
+                var unPartido = partidosMap.MapPartido(repoPartidos.GetById(Convert.ToInt32(id)));
+                var rtnPartido = new Controllers.Partido() { Equipos = unPartido.Equipos, Ganador = unPartido.Ganador, Ponderado = unPartido.Ponderado, Geolocalizacion = unPartido.Geolocalizacion, GolesPorEquipo = unPartido.GolesPorEquipo, Hora = unPartido.Fecha.ToString("MM:ss tt"), Id = unPartido.Id };
+                response.Content = new ObjectContent(typeof(Partido), rtnPartido, new JsonMediaTypeFormatter());
             }
             catch (Exception ex)
             {
@@ -114,46 +63,42 @@ namespace Game.Controllers
             }
             return response;
         }
-
-        public HttpResponseMessage Get(int idEquipo)
-        {
-            var response = new HttpResponseMessage(HttpStatusCode.OK);
-            try
-            {
-                var repo = new PartidoRepository();
-
-                //repo.GetAllByPartidoId();
-                Prediccion.Partido unPartido;
-
-                var equipos = new List<Equipo>();
-                equipos.Add(Equipo.Create(1, "Brasil"));
-                equipos.Add(Equipo.Create(2, "Croacia"));
-                unPartido = Prediccion.Partido.Create(1, equipos, DateTime.Now, "San Pablo", 80);
-                unPartido.SetGolesPorEquipo(1, 0);
-                unPartido.SetGolesPorEquipo(2, 0);
-                response.Content = new ObjectContent(typeof(Partido), unPartido, new JsonMediaTypeFormatter());
-            }
-            catch (Exception ex)
-            {
-                response.Content = new ObjectContent(typeof(string), ex.Message, new JsonMediaTypeFormatter());
-            }
-            return response;
-        }
-
+        
         public HttpResponseMessage Post(int idPartido, int idEquipo, int goles)
         {
             //actualiza los goles por equipo del partido
+            var response = new HttpResponseMessage(HttpStatusCode.OK);
+            try
+            {
+                var repoPartidos = new PartidoRepository();
+                var partidosMap = new PartidoMap();
+                repoPartidos.UpdateEquipoGolesByPartidoId(idPartido, idEquipo, goles);
 
-
-            return new HttpResponseMessage(HttpStatusCode.OK);
+                response.Content = new ObjectContent(typeof(string), "Partido actualizado con exito", new JsonMediaTypeFormatter());
+            }
+            catch (Exception ex)
+            {
+                response.Content = new ObjectContent(typeof(string), ex.Message, new JsonMediaTypeFormatter());
+            }
+            return response;
         }
 
-        public HttpResponseMessage Post(int idPartido, List<int> idEquipos)
+        public HttpResponseMessage Post(int idPartido, int[] idEquipos)
         {
             //actualiza los equipos por partido
-
-
-            return new HttpResponseMessage(HttpStatusCode.OK);
+            var response = new HttpResponseMessage(HttpStatusCode.OK);
+            try
+            {
+                var repoPartidos = new PartidoRepository();
+                var partidosMap = new PartidoMap();
+                repoPartidos.UpdateEquiposDelPartido(idPartido, idEquipos.ToList());
+                response.Content = new ObjectContent(typeof(string), "Partido actualizado con exito", new JsonMediaTypeFormatter());
+            }
+            catch (Exception ex)
+            {
+                response.Content = new ObjectContent(typeof(string), ex.Message, new JsonMediaTypeFormatter());
+            }
+            return response;
         }
     }
 

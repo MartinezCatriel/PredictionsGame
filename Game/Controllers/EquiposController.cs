@@ -7,19 +7,27 @@ using System.Net.Http.Formatting;
 using System.Web.Http;
 using Prediccion;
 using Repository.EntitiesRepository;
+using Game.RepositoryMap;
 
 namespace Game.Controllers
 {
     public class EquiposController : ApiController
     {
-
-
-
         public HttpResponseMessage Get(string id)
         {
-            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
-            var unEquipo = Equipo.Create(1, "Argentina");
-            response.Content = new ObjectContent(typeof(Equipo), unEquipo, new JsonMediaTypeFormatter()); // new StringContent("{equipoid:1, equiponombre:argentina}");
+            var response = new HttpResponseMessage(HttpStatusCode.OK);
+            try
+            {
+                var repoEquipo = new EquipoRepository();
+                var equipoMapper = new EquipoMap();
+                var equipo = equipoMapper.MapEquipo(repoEquipo.GetById(Convert.ToInt32(id)));
+                response.Content = new ObjectContent(typeof(Equipo), equipo, new JsonMediaTypeFormatter());
+            }
+            catch (Exception ex)
+            {
+                response.Content = new ObjectContent(typeof(string), "Error al obtener el equipo. Error:" + ex.Message + "Stack:" + ex.StackTrace, new JsonMediaTypeFormatter());
+                return response;
+            }
             return response;
         }
 
@@ -29,8 +37,8 @@ namespace Game.Controllers
             try
             {
                 var repoEquipo = new EquipoRepository();
-                var equipoMapper = new EquipoMapper();
-
+                var equipoMapper = new EquipoMap();
+                var equipos = equipoMapper.MapEquipos(repoEquipo.GetAll());
                 response.Content = new ObjectContent(typeof(List<Equipo>), equipos, new JsonMediaTypeFormatter());
             }
             catch (Exception ex)
@@ -38,11 +46,6 @@ namespace Game.Controllers
                 response.Content = new ObjectContent(typeof(string), "Error al obtener los equipos. Error:" + ex.Message + "Stack:" + ex.StackTrace, new JsonMediaTypeFormatter());
                 return response;
             }
-            var equipos = new List<Equipo>();
-            equipos.Add(Equipo.Create(1, "ARG"));
-            equipos.Add(Equipo.Create(2, "BRA"));
-            equipos.Add(Equipo.Create(3, "URU"));
-            response.Content = new ObjectContent(typeof(List<Equipo>), equipos, new JsonMediaTypeFormatter()); // new StringContent("{equipoid:1, equiponombre:argentina}");
             return response;
         }
     }

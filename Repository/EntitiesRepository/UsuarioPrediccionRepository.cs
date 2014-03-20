@@ -49,8 +49,18 @@ namespace Repository.EntitiesRepository
                 {
                     var toUpdate = response.ToList().FirstOrDefault();
                     toUpdate.Goles = goles;
-                    ctx.SaveChanges();
+
                 }
+                else
+                {
+                    var newPred = new Repository.UsuarioPrediccion();
+                    newPred.Goles = goles;
+                    newPred.IdEquipo = idequipo;
+                    newPred.IdPartido = idpartido;
+                    newPred.IdUsuario = idusaurio;
+                    ctx.UsuarioPrediccions.AddObject(newPred);
+                }
+                ctx.SaveChanges();
             }
         }
     }

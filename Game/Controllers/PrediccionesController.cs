@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Web.Http;
-using Game.RepositoryMapper;
+using Game.RepositoryMap;
 using Prediccion;
 using Repository.EntitiesRepository;
 
@@ -20,7 +20,7 @@ namespace Game.Controllers
             try
             {
                 var repoPredicciones = new UsuarioPrediccionRepository();
-                var usuarioMapper = new UsuarioPrediccionMapper();
+                var usuarioMapper = new UsuarioPrediccionMap();
                 var listaDePrediccionesPorUsuario = usuarioMapper.MapUsuarioPrediccion(repoPredicciones.GetByUsuarioId(user));
 
                 response.Content = new ObjectContent(typeof(List<UsuarioPrediccion>), listaDePrediccionesPorUsuario, new JsonMediaTypeFormatter());
@@ -40,7 +40,7 @@ namespace Game.Controllers
             try
             {
                 var repoPredicciones = new UsuarioPrediccionRepository();
-                var usuarioMapper = new UsuarioPrediccionMapper();
+                var usuarioMapper = new UsuarioPrediccionMap();
                 var prediccionByUserAndMatch = usuarioMapper.MapUsuarioPrediccion(repoPredicciones.GetByUsuarioId(user));
 
                 response.Content = new ObjectContent(typeof(List<UsuarioPrediccion>), prediccionByUserAndMatch, new JsonMediaTypeFormatter());
