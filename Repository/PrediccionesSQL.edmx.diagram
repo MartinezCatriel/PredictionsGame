@@ -8,15 +8,15 @@
         <EntityTypeShape EntityType="PrediccionesSQL.Animal" Width="1.5" PointX="14.625" PointY="6.375" />
         <EntityTypeShape EntityType="PrediccionesSQL.Equipo" Width="1.5" PointX="20" PointY="14.125" />
         <EntityTypeShape EntityType="PrediccionesSQL.Partido" Width="1.5" PointX="29.375" PointY="13.375" />
-        <EntityTypeShape EntityType="PrediccionesSQL.PartidoEquipo" Width="1.5" PointX="25.375" PointY="5.875" />
-        <AssociationConnector Association="PrediccionesSQL.FK_PartidoEquipo_ToEquipo" />
-        <AssociationConnector Association="PrediccionesSQL.FK_PartidoEquipo_ToPartido" />
         <EntityTypeShape EntityType="PrediccionesSQL.Usuario" Width="1.5" PointX="4.2750203554867863" PointY="9.2194098426119471" />
         <AssociationConnector Association="PrediccionesSQL.UsuarioAnimal" />
         <EntityTypeShape EntityType="PrediccionesSQL.UsuarioPrediccion" Width="1.5" PointX="7.7145845702451581" PointY="25.2544998495162" />
         <AssociationConnector Association="PrediccionesSQL.FK_UsuarioPrediccion_ToEquipo" />
         <AssociationConnector Association="PrediccionesSQL.FK_UsuarioPrediccion_ToPartido" />
         <AssociationConnector Association="PrediccionesSQL.FK_UsuarioPrediccion_ToUsuario" />
+        <EntityTypeShape EntityType="PrediccionesSQL.PartidoEquipo" Width="1.5" PointX="6.285084930381311" PointY="2.9364527775610112" />
+        <AssociationConnector Association="PrediccionesSQL.FK_PartidoEquipo_ToEquipo" />
+        <AssociationConnector Association="PrediccionesSQL.FK_PartidoEquipo_ToPartido" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

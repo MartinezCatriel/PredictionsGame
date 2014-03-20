@@ -19,12 +19,12 @@ using System.Xml.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("PrediccionesSQL", "FK_PartidoEquipo_ToEquipo", "Equipo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Repository.Equipo), "PartidoEquipo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.PartidoEquipo), true)]
-[assembly: EdmRelationshipAttribute("PrediccionesSQL", "FK_PartidoEquipo_ToPartido", "Partido", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Repository.Partido), "PartidoEquipo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.PartidoEquipo), true)]
 [assembly: EdmRelationshipAttribute("PrediccionesSQL", "UsuarioAnimal", "Animal", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.Animal), "Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.Usuario))]
 [assembly: EdmRelationshipAttribute("PrediccionesSQL", "FK_UsuarioPrediccion_ToEquipo", "Equipo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Repository.Equipo), "UsuarioPrediccion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.UsuarioPrediccion), true)]
 [assembly: EdmRelationshipAttribute("PrediccionesSQL", "FK_UsuarioPrediccion_ToPartido", "Partido", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Repository.Partido), "UsuarioPrediccion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.UsuarioPrediccion), true)]
 [assembly: EdmRelationshipAttribute("PrediccionesSQL", "FK_UsuarioPrediccion_ToUsuario", "Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Repository.Usuario), "UsuarioPrediccion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.UsuarioPrediccion), true)]
+[assembly: EdmRelationshipAttribute("PrediccionesSQL", "FK_PartidoEquipo_ToEquipo", "Equipo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Repository.Equipo), "PartidoEquipo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.PartidoEquipo), true)]
+[assembly: EdmRelationshipAttribute("PrediccionesSQL", "FK_PartidoEquipo_ToPartido", "Partido", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Repository.Partido), "PartidoEquipo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.PartidoEquipo), true)]
 
 #endregion
 
@@ -127,22 +127,6 @@ namespace Repository
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<PartidoEquipo> PartidoEquipoes
-        {
-            get
-            {
-                if ((_PartidoEquipoes == null))
-                {
-                    _PartidoEquipoes = base.CreateObjectSet<PartidoEquipo>("PartidoEquipoes");
-                }
-                return _PartidoEquipoes;
-            }
-        }
-        private ObjectSet<PartidoEquipo> _PartidoEquipoes;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<Usuario> Usuarios
         {
             get
@@ -171,6 +155,22 @@ namespace Repository
             }
         }
         private ObjectSet<UsuarioPrediccion> _UsuarioPrediccions;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<PartidoEquipo> PartidoEquipoes
+        {
+            get
+            {
+                if ((_PartidoEquipoes == null))
+                {
+                    _PartidoEquipoes = base.CreateObjectSet<PartidoEquipo>("PartidoEquipoes");
+                }
+                return _PartidoEquipoes;
+            }
+        }
+        private ObjectSet<PartidoEquipo> _PartidoEquipoes;
 
         #endregion
 
@@ -201,14 +201,6 @@ namespace Repository
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the PartidoEquipoes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToPartidoEquipoes(PartidoEquipo partidoEquipo)
-        {
-            base.AddObject("PartidoEquipoes", partidoEquipo);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the Usuarios EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToUsuarios(Usuario usuario)
@@ -222,6 +214,14 @@ namespace Repository
         public void AddToUsuarioPrediccions(UsuarioPrediccion usuarioPrediccion)
         {
             base.AddObject("UsuarioPrediccions", usuarioPrediccion);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the PartidoEquipoes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToPartidoEquipoes(PartidoEquipo partidoEquipo)
+        {
+            base.AddObject("PartidoEquipoes", partidoEquipo);
         }
 
         #endregion
@@ -454,28 +454,6 @@ namespace Repository
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("PrediccionesSQL", "FK_PartidoEquipo_ToEquipo", "PartidoEquipo")]
-        public EntityCollection<PartidoEquipo> PartidoEquipoes
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PartidoEquipo>("PrediccionesSQL.FK_PartidoEquipo_ToEquipo", "PartidoEquipo");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PartidoEquipo>("PrediccionesSQL.FK_PartidoEquipo_ToEquipo", "PartidoEquipo", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("PrediccionesSQL", "FK_UsuarioPrediccion_ToEquipo", "UsuarioPrediccion")]
         public EntityCollection<UsuarioPrediccion> UsuarioPrediccions
         {
@@ -488,6 +466,28 @@ namespace Repository
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UsuarioPrediccion>("PrediccionesSQL.FK_UsuarioPrediccion_ToEquipo", "UsuarioPrediccion", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("PrediccionesSQL", "FK_PartidoEquipo_ToEquipo", "PartidoEquipo")]
+        public EntityCollection<PartidoEquipo> PartidoEquipoes
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PartidoEquipo>("PrediccionesSQL.FK_PartidoEquipo_ToEquipo", "PartidoEquipo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PartidoEquipo>("PrediccionesSQL.FK_PartidoEquipo_ToEquipo", "PartidoEquipo", value);
                 }
             }
         }
@@ -636,28 +636,6 @@ namespace Repository
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("PrediccionesSQL", "FK_PartidoEquipo_ToPartido", "PartidoEquipo")]
-        public EntityCollection<PartidoEquipo> PartidoEquipoes
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PartidoEquipo>("PrediccionesSQL.FK_PartidoEquipo_ToPartido", "PartidoEquipo");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PartidoEquipo>("PrediccionesSQL.FK_PartidoEquipo_ToPartido", "PartidoEquipo", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("PrediccionesSQL", "FK_UsuarioPrediccion_ToPartido", "UsuarioPrediccion")]
         public EntityCollection<UsuarioPrediccion> UsuarioPrediccions
         {
@@ -670,6 +648,28 @@ namespace Repository
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UsuarioPrediccion>("PrediccionesSQL.FK_UsuarioPrediccion_ToPartido", "UsuarioPrediccion", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("PrediccionesSQL", "FK_PartidoEquipo_ToPartido", "PartidoEquipo")]
+        public EntityCollection<PartidoEquipo> PartidoEquipoes
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PartidoEquipo>("PrediccionesSQL.FK_PartidoEquipo_ToPartido", "PartidoEquipo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PartidoEquipo>("PrediccionesSQL.FK_PartidoEquipo_ToPartido", "PartidoEquipo", value);
                 }
             }
         }
@@ -764,7 +764,7 @@ namespace Repository
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 Goles
         {
@@ -774,11 +774,14 @@ namespace Repository
             }
             set
             {
-                OnGolesChanging(value);
-                ReportPropertyChanging("Goles");
-                _Goles = StructuralObject.SetValidValue(value, "Goles");
-                ReportPropertyChanged("Goles");
-                OnGolesChanged();
+                if (_Goles != value)
+                {
+                    OnGolesChanging(value);
+                    ReportPropertyChanging("Goles");
+                    _Goles = StructuralObject.SetValidValue(value, "Goles");
+                    ReportPropertyChanged("Goles");
+                    OnGolesChanged();
+                }
             }
         }
         private global::System.Int32 _Goles;

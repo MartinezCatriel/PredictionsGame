@@ -30,15 +30,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PartidoEquipoes">
-      <EntityTypeMapping TypeName="PrediccionesSQL.PartidoEquipo">
-        <MappingFragment StoreEntitySet="PartidoEquipo">
-          <ScalarProperty Name="Goles" ColumnName="Goles" />
-          <ScalarProperty Name="IdEquipo" ColumnName="IdEquipo" />
-          <ScalarProperty Name="IdPartido" ColumnName="IdPartido" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Usuarios">
       <EntityTypeMapping TypeName="PrediccionesSQL.Usuario">
         <MappingFragment StoreEntitySet="Usuario">
@@ -64,6 +55,15 @@
           <ScalarProperty Name="Goles" ColumnName="Goles" />
           <ScalarProperty Name="IdEquipo" ColumnName="IdEquipo" />
           <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdPartido" ColumnName="IdPartido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PartidoEquipoes">
+      <EntityTypeMapping TypeName="PrediccionesSQL.PartidoEquipo">
+        <MappingFragment StoreEntitySet="PartidoEquipo">
+          <ScalarProperty Name="Goles" ColumnName="Goles" />
+          <ScalarProperty Name="IdEquipo" ColumnName="IdEquipo" />
           <ScalarProperty Name="IdPartido" ColumnName="IdPartido" />
         </MappingFragment>
       </EntityTypeMapping>
