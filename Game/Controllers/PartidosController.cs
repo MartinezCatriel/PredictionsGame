@@ -70,6 +70,10 @@ namespace Game.Controllers
             var response = new HttpResponseMessage(HttpStatusCode.OK);
             try
             {
+                if (partidoToUpload == null)
+                {
+                    throw new Exception("Debe enviar informacion válida");
+                }
                 var dic = new Dictionary<int, int>(partidoToUpload.Equipos.Count);
                 foreach (var eg in partidoToUpload.Equipos)
                 {
@@ -86,6 +90,14 @@ namespace Game.Controllers
                 response.Content = new ObjectContent(typeof(string), ex.Message, new JsonMediaTypeFormatter());
             }
             return response;
+        }
+
+        public HttpResponseMessage Get(bool f)
+        {
+            var part = new PartidoEquiposUpload();
+            part.IdPartido = 1;
+            part.Equipos = new List<EquipoGoles>(2) { new EquipoGoles() { Goles = 1, IdEquipo = 7 }, new EquipoGoles() { Goles = 1, IdEquipo = 8 } };
+            return new HttpResponseMessage(HttpStatusCode.OK) { Content = new ObjectContent(typeof(PartidoEquiposUpload), part, new JsonMediaTypeFormatter()) };
         }
     }
 

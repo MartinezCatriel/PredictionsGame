@@ -14,7 +14,7 @@
         <AssociationConnector Association="PrediccionesSQL.FK_UsuarioPrediccion_ToEquipo" />
         <AssociationConnector Association="PrediccionesSQL.FK_UsuarioPrediccion_ToPartido" />
         <AssociationConnector Association="PrediccionesSQL.FK_UsuarioPrediccion_ToUsuario" />
-        <EntityTypeShape EntityType="PrediccionesSQL.PartidoEquipo" Width="1.5" PointX="6.285084930381311" PointY="2.9364527775610112" />
+        <EntityTypeShape EntityType="PrediccionesSQL.PartidoEquipo" Width="1.5" PointX="2.0747451791887848" PointY="7.1375417742587359" />
         <AssociationConnector Association="PrediccionesSQL.FK_PartidoEquipo_ToEquipo" />
         <AssociationConnector Association="PrediccionesSQL.FK_PartidoEquipo_ToPartido" />
         </Diagram>

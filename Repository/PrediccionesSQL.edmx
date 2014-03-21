@@ -9,13 +9,7 @@
           <EntitySet Name="Animal" EntityType="PrediccionesSQL.Store.Animal" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Equipo" EntityType="PrediccionesSQL.Store.Equipo" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Partido" EntityType="PrediccionesSQL.Store.Partido" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="PartidoEquipo" EntityType="PrediccionesSQL.Store.PartidoEquipo" store:Type="Tables" store:Schema="dbo" store:Name="PartidoEquipo">
-            <DefiningQuery>SELECT 
-      [PartidoEquipo].[IdPartido] AS [IdPartido], 
-      [PartidoEquipo].[IdEquipo] AS [IdEquipo], 
-      [PartidoEquipo].[Goles] AS [Goles]
-      FROM [dbo].[PartidoEquipo] AS [PartidoEquipo]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="PartidoEquipo" EntityType="PrediccionesSQL.Store.PartidoEquipo" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Usuario" EntityType="PrediccionesSQL.Store.Usuario" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UsuarioAnimal" EntityType="PrediccionesSQL.Store.UsuarioAnimal" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UsuarioPrediccion" EntityType="PrediccionesSQL.Store.UsuarioPrediccion" store:Type="Tables" Schema="dbo" />
@@ -72,14 +66,10 @@
           <Property Name="Geolocalizacion" Type="varchar" Nullable="false" MaxLength="500" />
           <Property Name="Ponderado" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'C:\USERS\NANCY\DESKTOP\PREDICTIONSGAME\GAME\APP_DATA\PREDICCIONES.MDF.dbo.PartidoEquipo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
         <EntityType Name="PartidoEquipo">
           <Key>
             <PropertyRef Name="IdPartido" />
             <PropertyRef Name="IdEquipo" />
-            <PropertyRef Name="Goles" />
           </Key>
           <Property Name="IdPartido" Type="int" Nullable="false" />
           <Property Name="IdEquipo" Type="int" Nullable="false" />
@@ -333,7 +323,6 @@
           <Key>
             <PropertyRef Name="IdPartido" />
             <PropertyRef Name="IdEquipo" />
-            <PropertyRef Name="Goles" />
           </Key>
           <Property Type="Int32" Name="IdPartido" Nullable="false" />
           <Property Type="Int32" Name="IdEquipo" Nullable="false" />

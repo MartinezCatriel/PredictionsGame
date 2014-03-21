@@ -33,7 +33,7 @@ namespace Prediccion
         public Dictionary<int, int> GolesPorEquipo { get; private set; }
         public List<Equipo> Equipos { get; set; }
 
-        private Partido(int id, IEnumerable<Equipo> equipos, DateTime fecha, string geo, int ponderado)
+        private Partido(int id, IEnumerable<Equipo> equipos, DateTime fecha, string geo, int ponderado, Dictionary<int, int> goles)
         {
             Id = id;
             Equipos = new List<Equipo>();
@@ -44,14 +44,14 @@ namespace Prediccion
             }
             Fecha = fecha;
             Geolocalizacion = geo;
-            GolesPorEquipo = new Dictionary<int, int>();
+            GolesPorEquipo = goles;
             Ponderado = ponderado;
 
         }
 
-        public static Partido Create(int id, IEnumerable<Equipo> equipos, DateTime fecha, string geo, int ponderado)
+        public static Partido Create(int id, IEnumerable<Equipo> equipos, DateTime fecha, string geo, int ponderado, Dictionary<int, int> goles)
         {
-            return new Partido(id, equipos, fecha, geo, ponderado);
+            return new Partido(id, equipos, fecha, geo, ponderado, goles);
         }
 
         public void SetGolesPorEquipo(int equipo, int goles)

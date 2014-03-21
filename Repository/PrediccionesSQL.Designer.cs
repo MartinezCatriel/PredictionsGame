@@ -764,7 +764,7 @@ namespace Repository
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int32 Goles
         {
@@ -774,14 +774,11 @@ namespace Repository
             }
             set
             {
-                if (_Goles != value)
-                {
-                    OnGolesChanging(value);
-                    ReportPropertyChanging("Goles");
-                    _Goles = StructuralObject.SetValidValue(value, "Goles");
-                    ReportPropertyChanged("Goles");
-                    OnGolesChanged();
-                }
+                OnGolesChanging(value);
+                ReportPropertyChanging("Goles");
+                _Goles = StructuralObject.SetValidValue(value, "Goles");
+                ReportPropertyChanged("Goles");
+                OnGolesChanged();
             }
         }
         private global::System.Int32 _Goles;

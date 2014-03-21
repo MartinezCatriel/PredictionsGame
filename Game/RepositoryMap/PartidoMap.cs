@@ -12,6 +12,7 @@ namespace Game.RepositoryMap
         public PartidoMod MapPartido(PartidoSql toMap)
         {
             var equipos = new List<Prediccion.Equipo>();
+            var golesByEquipo = new Dictionary<int, int>();
             if (toMap.PartidoEquipoes.IsLoaded)
             {
                 var equipoMap = new EquipoMap();
@@ -19,9 +20,10 @@ namespace Game.RepositoryMap
                 foreach (var item in toMap.PartidoEquipoes)
                 {
                     equipos.Add(equipoMap.MapEquipo(item.Equipo));
+                    golesByEquipo.Add(item.Equipo.Id, item.Goles);
                 }
             }
-            return PartidoMod.Create(toMap.Id, equipos, toMap.Fecha, toMap.Geolocalizacion, toMap.Ponderado);
+            return PartidoMod.Create(toMap.Id, equipos, toMap.Fecha, toMap.Geolocalizacion, toMap.Ponderado, golesByEquipo);
         }
 
         public List<PartidoMod> MapPartidos(List<PartidoSql> toMap)

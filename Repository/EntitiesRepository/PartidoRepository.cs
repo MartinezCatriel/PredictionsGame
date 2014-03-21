@@ -57,6 +57,7 @@ namespace Repository.EntitiesRepository
             return par;
         }
 
+        #region deprecated updates
         public void Update(int idPartido, DateTime fecha, string geo, int ponderado)
         {
             if (idPartido != DefaultIdPartido)
@@ -128,6 +129,35 @@ namespace Repository.EntitiesRepository
                 }
             }
         }
+        #endregion
+
+        public void UpdateEquiposAndGolesFromPartido2(int idPartido, Dictionary<int, int> equiposGoles)
+        {
+            if (idPartido != DefaultIdPartido)
+            {
+                using (var ctx = new PrediccionesSQLContainer())
+                {
+                    var toUpdate = (from p
+                                    in ctx.PartidoEquipoes
+                                    where p.IdPartido == idPartido
+                                    select p);
+                    var partidos = toUpdate.ToList();
+
+
+                    partidos.ForEach((partido) => { ctx.PartidoEquipoes.DeleteObject(partido); });
+
+                    foreach (var golesEquipo in equiposGoles)
+                    {
+                        ctx.PartidoEquipoes.AddObject(PartidoEquipo.CreatePartidoEquipo(idPartido, golesEquipo.Key, golesEquipo.Value));
+                    }
+
+                    if (partidos.Count > 0)
+                    {
+                        ctx.SaveChanges();
+                    }
+                }
+            }
+        }
 
         public void UpdateEquiposAndGolesFromPartido(int idPartido, Dictionary<int, int> equiposGoles)
         {
@@ -143,6 +173,11 @@ namespace Repository.EntitiesRepository
 
 
                     partidos.ForEach((partido) => { ctx.PartidoEquipoes.DeleteObject(partido); });
+                    if (partidos.Exists((partido) => { return partido.EntityState == EntityState.Deleted; }))
+                    {
+                        ctx.SaveChanges();
+                    }
+
 
                     foreach (var golesEquipo in equiposGoles)
                     {

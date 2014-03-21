@@ -131,7 +131,6 @@
     <Key>
       <PropertyRef Name="IdPartido" />
       <PropertyRef Name="IdEquipo" />
-      <PropertyRef Name="Goles" />
     </Key>
     <Property Type="Int32" Name="IdPartido" Nullable="false" />
     <Property Type="Int32" Name="IdEquipo" Nullable="false" />
