@@ -80,7 +80,7 @@ namespace Game.Controllers
         }
 
 
-        public HttpResponseMessage Post(int id, string token)
+        /*public HttpResponseMessage Post(int id, string token)
         {
             var response = new HttpResponseMessage(HttpStatusCode.OK);
 
@@ -99,7 +99,7 @@ namespace Game.Controllers
             }
             return response;
         }
-
+        */
 
     }
 

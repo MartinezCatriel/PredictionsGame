@@ -66,31 +66,18 @@ namespace Game.Controllers
 
         public HttpResponseMessage Post(PartidoEquiposUpload partidoToUpload)
         {
-            //actualiza los equipos por partido
-            var response = new HttpResponseMessage(HttpStatusCode.OK);
-            try
-            {
-                var repoPartidos = new PartidoRepository();
-                var partidosMap = new PartidoMap();
-                repoPartidos.UpdateEquiposDelPartido(partidoToUpload.IdPartido, partidoToUpload.Equipos.ToList());
-                response.Content = new ObjectContent(typeof(string), "Partido actualizado con exito", new JsonMediaTypeFormatter());
-            }
-            catch (Exception ex)
-            {
-                response.Content = new ObjectContent(typeof(string), ex.Message, new JsonMediaTypeFormatter());
-            }
-            return response;
-        }
-
-        public HttpResponseMessage Post(PartidoEquipoGolesUpload partidoToUpload)
-        {
             //actualiza los goles por equipo del partido
             var response = new HttpResponseMessage(HttpStatusCode.OK);
             try
             {
+                var dic = new Dictionary<int, int>(partidoToUpload.Equipos.Count);
+                foreach (var eg in partidoToUpload.Equipos)
+                {
+                    dic.Add(eg.IdEquipo, eg.Goles);
+                }
                 var repoPartidos = new PartidoRepository();
-                var partidosMap = new PartidoMap();
-                repoPartidos.UpdateEquipoGolesByPartidoId(partidoToUpload.idPartido, partidoToUpload.idEquipo, partidoToUpload.goles);
+                repoPartidos.UpdateEquiposAndGolesFromPartido(partidoToUpload.IdPartido
+                                                            , dic);
 
                 response.Content = new ObjectContent(typeof(string), "Partido actualizado con exito", new JsonMediaTypeFormatter());
             }
@@ -100,21 +87,18 @@ namespace Game.Controllers
             }
             return response;
         }
-
-       
     }
 
     public class PartidoEquiposUpload
     {
         public int IdPartido { get; set; }
-        public List<int> Equipos { get; set; }
+        public List<EquipoGoles> Equipos { get; set; }
     }
 
-    public class PartidoEquipoGolesUpload
+    public class EquipoGoles
     {
-        public int idPartido { get; set; }
-        public int idEquipo { get; set; }
-        public int goles { get; set; }
+        public int IdEquipo { get; set; }
+        public int Goles { get; set; }
     }
 
     public class PartidosPorFecha
