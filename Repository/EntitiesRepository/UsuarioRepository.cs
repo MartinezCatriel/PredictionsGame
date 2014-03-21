@@ -12,9 +12,9 @@ namespace Repository.EntitiesRepository
         {
 
             var rtn = new List<Usuario>();
-            using (var ctx = new PrediccionesSQLContainer())
+            using (var ctx = new PredictionSQLEntities())
             {
-                var response = (from u in ctx.Usuarios select u);
+                var response = (from u in ctx.Usuario select u);
                 rtn = response.ToList();
             }
             return rtn;
@@ -23,14 +23,14 @@ namespace Repository.EntitiesRepository
         public Usuario Insert(string email, string procedencia, string token)
         {
             Usuario newUsu = null;
-            using (var ctx = new PrediccionesSQLContainer())
+            using (var ctx = new PredictionSQLEntities())
             {
-                var response = (from u in ctx.Usuarios where u.Email == email select u);
+                var response = (from u in ctx.Usuario where u.Email == email select u);
                 var usu = response.ToList().FirstOrDefault();
                 if (usu == null)
                 {
                     newUsu = new Usuario() { Email = email, Procedencia = procedencia, Token = token };
-                    ctx.Usuarios.AddObject(newUsu);
+                    ctx.Usuario.AddObject(newUsu);
                 }
                 else
                 {
@@ -46,9 +46,9 @@ namespace Repository.EntitiesRepository
         public Usuario UploadTokenById(int id, string token)
         {
             Usuario newUsu = null;
-            using (var ctx = new PrediccionesSQLContainer())
+            using (var ctx = new PredictionSQLEntities())
             {
-                var response = (from u in ctx.Usuarios where u.Id == id select u);
+                var response = (from u in ctx.Usuario where u.Id == id select u);
                 var usu = response.ToList().FirstOrDefault();
                 if (usu != null)
                 {
@@ -64,9 +64,9 @@ namespace Repository.EntitiesRepository
         public Usuario GetById(int id)
         {
             Usuario usuario = null;
-            using (var ctx = new PrediccionesSQLContainer())
+            using (var ctx = new PredictionSQLEntities())
             {
-                var response = (from u in ctx.Usuarios where u.Id == id select u);
+                var response = (from u in ctx.Usuario where u.Id == id select u);
                 if (response.ToList().FirstOrDefault() != null)
                 {
                     usuario = response.ToList().FirstOrDefault();

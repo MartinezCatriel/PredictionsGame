@@ -52,16 +52,6 @@
     <Compile Include="EntitiesRepository\UsuarioPrediccionRepository.cs" />
     <Compile Include="EntitiesRepository\UsuarioRepository.cs" />
     <Compile Include="IRepository.cs" />
-    <Compile Include="PrediccionesSDF.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PrediccionesSDF.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="PrediccionesSQL.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PrediccionesSQL.edmx</DependentUpon>
-    </Compile>
     <Compile Include="PredictionSQLAzure.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -78,20 +68,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <EntityDeploy Include="PrediccionesSQL.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PrediccionesSQL.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <EntityDeploy Include="PrediccionesSDF.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PrediccionesSDF.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="PrediccionesSDF.edmx.diagram">
-      <DependentUpon>PrediccionesSDF.edmx</DependentUpon>
-    </None>
-    <None Include="PrediccionesSQL.edmx.diagram">
-      <DependentUpon>PrediccionesSQL.edmx</DependentUpon>
-    </None>
     <EntityDeploy Include="PredictionSQLAzure.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>PredictionSQLAzure.Designer.cs</LastGenOutput>

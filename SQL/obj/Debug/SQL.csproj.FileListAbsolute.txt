@@ -30,3 +30,14 @@ C:\Users\casa\Desktop\PredictionsGame\SQL\obj\Debug\SQL.dll
 C:\Users\casa\Desktop\PredictionsGame\SQL\obj\Debug\SQL.pdb
 C:\Users\casa\Desktop\PredictionsGame\SQL\bin\Debug\PrediccionesSDF.sdf
 C:\Users\Nancy\Desktop\PredictionsGame\SQL\bin\Debug\PrediccionesSDF.sdf
+C:\Users\Nancy\Desktop\dif\PredictionsGame\SQL\bin\Debug\PrediccionesSDF.sdf
+C:\Users\Nancy\Desktop\dif\PredictionsGame\SQL\bin\Debug\Predicciones.mdf
+C:\Users\Nancy\Desktop\dif\PredictionsGame\SQL\bin\Debug\Predicciones_log.ldf
+C:\Users\Nancy\Desktop\dif\PredictionsGame\SQL\bin\Debug\SQL.dll.config
+C:\Users\Nancy\Desktop\dif\PredictionsGame\SQL\bin\Debug\SQL.dll
+C:\Users\Nancy\Desktop\dif\PredictionsGame\SQL\bin\Debug\SQL.pdb
+C:\Users\Nancy\Desktop\dif\PredictionsGame\SQL\bin\Debug\EntityFramework.dll
+C:\Users\Nancy\Desktop\dif\PredictionsGame\SQL\bin\Debug\EntityFramework.xml
+C:\Users\Nancy\Desktop\dif\PredictionsGame\SQL\obj\Debug\SQL.csprojResolveAssemblyReference.cache
+C:\Users\Nancy\Desktop\dif\PredictionsGame\SQL\obj\Debug\SQL.dll
+C:\Users\Nancy\Desktop\dif\PredictionsGame\SQL\obj\Debug\SQL.pdb

@@ -13,11 +13,11 @@ namespace Game.RepositoryMap
         {
             var equipos = new List<Prediccion.Equipo>();
             var golesByEquipo = new Dictionary<int, int>();
-            if (toMap.PartidoEquipoes.IsLoaded)
+            if (toMap.PartidoEquipo.IsLoaded)
             {
                 var equipoMap = new EquipoMap();
 
-                foreach (var item in toMap.PartidoEquipoes)
+                foreach (var item in toMap.PartidoEquipo)
                 {
                     equipos.Add(equipoMap.MapEquipo(item.Equipo));
                     golesByEquipo.Add(item.Equipo.Id, item.Goles);

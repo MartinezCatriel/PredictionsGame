@@ -20,9 +20,9 @@ namespace Repository.EntitiesRepository
         public List<Partido> GetAll()
         {
             var all = new List<Partido>();
-            using (var ctx = new PrediccionesSQLContainer())
+            using (var ctx = new PredictionSQLEntities())
             {
-                var partidos = (from a in ctx.Partidoes.Include("PartidoEquipoes").Include("PartidoEquipoes.Equipo") select a);
+                var partidos = (from a in ctx.Partido.Include("PartidoEquipo").Include("PartidoEquipo.Equipo") select a);
                 all.AddRange(partidos.ToList());
             }
             return all;
@@ -31,10 +31,10 @@ namespace Repository.EntitiesRepository
         public List<Partido> GetAllByEquipoId(int idEquipo)
         {
             var all = new List<Partido>();
-            using (var ctx = new PrediccionesSQLContainer())
+            using (var ctx = new PredictionSQLEntities())
             {
-                var pbes = (from s in ctx.Partidoes.Include("PartidoEquipos").Include("PartidoEquipos.Equipo")
-                            join sa in ctx.PartidoEquipoes on s.Id equals sa.IdPartido
+                var pbes = (from s in ctx.Partido.Include("PartidoEquipo").Include("PartidoEquipo.Equipo")
+                            join sa in ctx.PartidoEquipo on s.Id equals sa.IdPartido
                             where sa.IdEquipo == idEquipo
                             select s);
                 all.AddRange(pbes.ToList());
@@ -46,9 +46,9 @@ namespace Repository.EntitiesRepository
         public Partido GetById(int idPartido)
         {
             var par = new Partido();
-            using (var ctx = new PrediccionesSQLContainer())
+            using (var ctx = new PredictionSQLEntities())
             {
-                var pbes = (from s in ctx.Partidoes.Include("PartidoEquipoes").Include("PartidoEquipoes.Equipo")
+                var pbes = (from s in ctx.Partido.Include("PartidoEquipo").Include("PartidoEquipo.Equipo")
                             where s.Id == idPartido
                             select s);
                 par = pbes.ToList().FirstOrDefault();
@@ -62,10 +62,10 @@ namespace Repository.EntitiesRepository
         {
             if (idPartido != DefaultIdPartido)
             {
-                using (var ctx = new PrediccionesSQLContainer())
+                using (var ctx = new PredictionSQLEntities())
                 {
                     var toUpdate = (from p
-                                    in ctx.Partidoes
+                                    in ctx.Partido
                                     where p.Id == idPartido
                                     select p);
                     var partido = toUpdate.ToList().FirstOrDefault();
@@ -85,10 +85,10 @@ namespace Repository.EntitiesRepository
         {
             if (idPartido != DefaultIdPartido)
             {
-                using (var ctx = new PrediccionesSQLContainer())
+                using (var ctx = new PredictionSQLEntities())
                 {
                     var toUpdate = (from p
-                                    in ctx.PartidoEquipoes
+                                    in ctx.PartidoEquipo
                                     where p.IdPartido == idPartido
                                     && p.IdEquipo == idEquipo
                                     select p);
@@ -107,10 +107,10 @@ namespace Repository.EntitiesRepository
         {
             if (idPartido != DefaultIdPartido)
             {
-                using (var ctx = new PrediccionesSQLContainer())
+                using (var ctx = new PredictionSQLEntities())
                 {
                     var toUpdate = (from p
-                                    in ctx.PartidoEquipoes
+                                    in ctx.PartidoEquipo
                                     where p.IdPartido == idPartido
                                     select p);
                     var partidos = toUpdate.ToList();
@@ -135,20 +135,20 @@ namespace Repository.EntitiesRepository
         {
             if (idPartido != DefaultIdPartido)
             {
-                using (var ctx = new PrediccionesSQLContainer())
+                using (var ctx = new PredictionSQLEntities())
                 {
                     var toUpdate = (from p
-                                    in ctx.PartidoEquipoes
+                                    in ctx.PartidoEquipo
                                     where p.IdPartido == idPartido
                                     select p);
                     var partidos = toUpdate.ToList();
 
 
-                    partidos.ForEach((partido) => { ctx.PartidoEquipoes.DeleteObject(partido); });
+                    partidos.ForEach((partido) => { ctx.PartidoEquipo.DeleteObject(partido); });
 
                     foreach (var golesEquipo in equiposGoles)
                     {
-                        ctx.PartidoEquipoes.AddObject(PartidoEquipo.CreatePartidoEquipo(idPartido, golesEquipo.Key, golesEquipo.Value));
+                        ctx.PartidoEquipo.AddObject(PartidoEquipo.CreatePartidoEquipo(idPartido, golesEquipo.Key, golesEquipo.Value));
                     }
 
                     if (partidos.Count > 0)
@@ -163,16 +163,16 @@ namespace Repository.EntitiesRepository
         {
             if (idPartido != DefaultIdPartido)
             {
-                using (var ctx = new PrediccionesSQLContainer())
+                using (var ctx = new PredictionSQLEntities())
                 {
                     var toUpdate = (from p
-                                    in ctx.PartidoEquipoes
+                                    in ctx.PartidoEquipo
                                     where p.IdPartido == idPartido
                                     select p);
                     var partidos = toUpdate.ToList();
 
 
-                    partidos.ForEach((partido) => { ctx.PartidoEquipoes.DeleteObject(partido); });
+                    partidos.ForEach((partido) => { ctx.PartidoEquipo.DeleteObject(partido); });
                     if (partidos.Exists((partido) => { return partido.EntityState == EntityState.Deleted; }))
                     {
                         ctx.SaveChanges();
@@ -181,7 +181,7 @@ namespace Repository.EntitiesRepository
 
                     foreach (var golesEquipo in equiposGoles)
                     {
-                        ctx.PartidoEquipoes.AddObject(PartidoEquipo.CreatePartidoEquipo(idPartido, golesEquipo.Key, golesEquipo.Value));
+                        ctx.PartidoEquipo.AddObject(PartidoEquipo.CreatePartidoEquipo(idPartido, golesEquipo.Key, golesEquipo.Value));
                     }
 
                     if (partidos.Count > 0)

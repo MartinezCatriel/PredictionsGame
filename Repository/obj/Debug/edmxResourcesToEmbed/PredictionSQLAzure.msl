@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PredictionSQLModelStoreContainer" CdmEntityContainer="PredictionSQLEntities">
+    <EntitySetMapping Name="Animal">
+      <EntityTypeMapping TypeName="PredictionSQLModel.Animal">
+        <MappingFragment StoreEntitySet="Animal">
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Equipo">
+      <EntityTypeMapping TypeName="PredictionSQLModel.Equipo">
+        <MappingFragment StoreEntitySet="Equipo">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Partido">
+      <EntityTypeMapping TypeName="PredictionSQLModel.Partido">
+        <MappingFragment StoreEntitySet="Partido">
+          <ScalarProperty Name="Ponderado" ColumnName="Ponderado" />
+          <ScalarProperty Name="Geolocalizacion" ColumnName="Geolocalizacion" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PartidoEquipo">
+      <EntityTypeMapping TypeName="PredictionSQLModel.PartidoEquipo">
+        <MappingFragment StoreEntitySet="PartidoEquipo">
+          <ScalarProperty Name="Goles" ColumnName="Goles" />
+          <ScalarProperty Name="IdEquipo" ColumnName="IdEquipo" />
+          <ScalarProperty Name="IdPartido" ColumnName="IdPartido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="PredictionSQLModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="Procedencia" ColumnName="Procedencia" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsuarioPrediccion">
+      <EntityTypeMapping TypeName="PredictionSQLModel.UsuarioPrediccion">
+        <MappingFragment StoreEntitySet="UsuarioPrediccion">
+          <ScalarProperty Name="Predecido" ColumnName="Predecido" />
+          <ScalarProperty Name="Goles" ColumnName="Goles" />
+          <ScalarProperty Name="IdEquipo" ColumnName="IdEquipo" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdPartido" ColumnName="IdPartido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="UsuarioAnimal" TypeName="PredictionSQLModel.UsuarioAnimal" StoreEntitySet="UsuarioAnimal">
+      <EndProperty Name="Usuario">
+        <ScalarProperty Name="Id" ColumnName="IdUsuario" />
+      </EndProperty>
+      <EndProperty Name="Animal">
+        <ScalarProperty Name="Id" ColumnName="IdAnimal" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

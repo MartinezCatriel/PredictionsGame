@@ -13,7 +13,7 @@ namespace Common
             if (string.IsNullOrWhiteSpace(token))
                 throw new FacebookException();
 
-            return "mail@mail.com";
+            return token + "@" + token + ".com";
         }
     }
 

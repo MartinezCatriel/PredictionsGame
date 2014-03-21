@@ -17,6 +17,17 @@ using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
+#region EDM Relationship Metadata
+
+[assembly: EdmRelationshipAttribute("PredictionSQLModel", "FK_PartidoEquipo_ToEquipo", "Equipo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Repository.Equipo), "PartidoEquipo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.PartidoEquipo), true)]
+[assembly: EdmRelationshipAttribute("PredictionSQLModel", "FK_UsuarioPrediccion_ToEquipo", "Equipo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Repository.Equipo), "UsuarioPrediccion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.UsuarioPrediccion), true)]
+[assembly: EdmRelationshipAttribute("PredictionSQLModel", "FK_PartidoEquipo_ToPartido", "Partido", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Repository.Partido), "PartidoEquipo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.PartidoEquipo), true)]
+[assembly: EdmRelationshipAttribute("PredictionSQLModel", "FK_UsuarioPrediccion_ToPartido", "Partido", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Repository.Partido), "UsuarioPrediccion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.UsuarioPrediccion), true)]
+[assembly: EdmRelationshipAttribute("PredictionSQLModel", "FK_UsuarioPrediccion_ToUsuario", "Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Repository.Usuario), "UsuarioPrediccion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.UsuarioPrediccion), true)]
+[assembly: EdmRelationshipAttribute("PredictionSQLModel", "UsuarioAnimal", "Animal", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.Animal), "Usuario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Repository.Usuario))]
+
+#endregion
+
 namespace Repository
 {
     #region Contexts
@@ -63,6 +74,1265 @@ namespace Repository
     
         #endregion
     
+        #region ObjectSet Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Animal> Animal
+        {
+            get
+            {
+                if ((_Animal == null))
+                {
+                    _Animal = base.CreateObjectSet<Animal>("Animal");
+                }
+                return _Animal;
+            }
+        }
+        private ObjectSet<Animal> _Animal;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Equipo> Equipo
+        {
+            get
+            {
+                if ((_Equipo == null))
+                {
+                    _Equipo = base.CreateObjectSet<Equipo>("Equipo");
+                }
+                return _Equipo;
+            }
+        }
+        private ObjectSet<Equipo> _Equipo;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Partido> Partido
+        {
+            get
+            {
+                if ((_Partido == null))
+                {
+                    _Partido = base.CreateObjectSet<Partido>("Partido");
+                }
+                return _Partido;
+            }
+        }
+        private ObjectSet<Partido> _Partido;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<PartidoEquipo> PartidoEquipo
+        {
+            get
+            {
+                if ((_PartidoEquipo == null))
+                {
+                    _PartidoEquipo = base.CreateObjectSet<PartidoEquipo>("PartidoEquipo");
+                }
+                return _PartidoEquipo;
+            }
+        }
+        private ObjectSet<PartidoEquipo> _PartidoEquipo;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Usuario> Usuario
+        {
+            get
+            {
+                if ((_Usuario == null))
+                {
+                    _Usuario = base.CreateObjectSet<Usuario>("Usuario");
+                }
+                return _Usuario;
+            }
+        }
+        private ObjectSet<Usuario> _Usuario;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<UsuarioPrediccion> UsuarioPrediccion
+        {
+            get
+            {
+                if ((_UsuarioPrediccion == null))
+                {
+                    _UsuarioPrediccion = base.CreateObjectSet<UsuarioPrediccion>("UsuarioPrediccion");
+                }
+                return _UsuarioPrediccion;
+            }
+        }
+        private ObjectSet<UsuarioPrediccion> _UsuarioPrediccion;
+
+        #endregion
+
+        #region AddTo Methods
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Animal EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToAnimal(Animal animal)
+        {
+            base.AddObject("Animal", animal);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Equipo EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToEquipo(Equipo equipo)
+        {
+            base.AddObject("Equipo", equipo);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Partido EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToPartido(Partido partido)
+        {
+            base.AddObject("Partido", partido);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the PartidoEquipo EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToPartidoEquipo(PartidoEquipo partidoEquipo)
+        {
+            base.AddObject("PartidoEquipo", partidoEquipo);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Usuario EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToUsuario(Usuario usuario)
+        {
+            base.AddObject("Usuario", usuario);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the UsuarioPrediccion EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToUsuarioPrediccion(UsuarioPrediccion usuarioPrediccion)
+        {
+            base.AddObject("UsuarioPrediccion", usuarioPrediccion);
+        }
+
+        #endregion
+
+    }
+
+    #endregion
+
+    #region Entities
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="PredictionSQLModel", Name="Animal")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Animal : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Animal object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="nombre">Initial value of the Nombre property.</param>
+        /// <param name="tipo">Initial value of the Tipo property.</param>
+        public static Animal CreateAnimal(global::System.Int32 id, global::System.String nombre, global::System.Int32 tipo)
+        {
+            Animal animal = new Animal();
+            animal.Id = id;
+            animal.Nombre = nombre;
+            animal.Tipo = tipo;
+            return animal;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value, "Id");
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Nombre
+        {
+            get
+            {
+                return _Nombre;
+            }
+            set
+            {
+                OnNombreChanging(value);
+                ReportPropertyChanging("Nombre");
+                _Nombre = StructuralObject.SetValidValue(value, false, "Nombre");
+                ReportPropertyChanged("Nombre");
+                OnNombreChanged();
+            }
+        }
+        private global::System.String _Nombre;
+        partial void OnNombreChanging(global::System.String value);
+        partial void OnNombreChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Tipo
+        {
+            get
+            {
+                return _Tipo;
+            }
+            set
+            {
+                OnTipoChanging(value);
+                ReportPropertyChanging("Tipo");
+                _Tipo = StructuralObject.SetValidValue(value, "Tipo");
+                ReportPropertyChanged("Tipo");
+                OnTipoChanged();
+            }
+        }
+        private global::System.Int32 _Tipo;
+        partial void OnTipoChanging(global::System.Int32 value);
+        partial void OnTipoChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("PredictionSQLModel", "UsuarioAnimal", "Usuario")]
+        public EntityCollection<Usuario> Usuario
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Usuario>("PredictionSQLModel.UsuarioAnimal", "Usuario");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Usuario>("PredictionSQLModel.UsuarioAnimal", "Usuario", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="PredictionSQLModel", Name="Equipo")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Equipo : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Equipo object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="nombre">Initial value of the Nombre property.</param>
+        public static Equipo CreateEquipo(global::System.Int32 id, global::System.String nombre)
+        {
+            Equipo equipo = new Equipo();
+            equipo.Id = id;
+            equipo.Nombre = nombre;
+            return equipo;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value, "Id");
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Nombre
+        {
+            get
+            {
+                return _Nombre;
+            }
+            set
+            {
+                OnNombreChanging(value);
+                ReportPropertyChanging("Nombre");
+                _Nombre = StructuralObject.SetValidValue(value, false, "Nombre");
+                ReportPropertyChanged("Nombre");
+                OnNombreChanged();
+            }
+        }
+        private global::System.String _Nombre;
+        partial void OnNombreChanging(global::System.String value);
+        partial void OnNombreChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("PredictionSQLModel", "FK_PartidoEquipo_ToEquipo", "PartidoEquipo")]
+        public EntityCollection<PartidoEquipo> PartidoEquipo
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PartidoEquipo>("PredictionSQLModel.FK_PartidoEquipo_ToEquipo", "PartidoEquipo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PartidoEquipo>("PredictionSQLModel.FK_PartidoEquipo_ToEquipo", "PartidoEquipo", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("PredictionSQLModel", "FK_UsuarioPrediccion_ToEquipo", "UsuarioPrediccion")]
+        public EntityCollection<UsuarioPrediccion> UsuarioPrediccion
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<UsuarioPrediccion>("PredictionSQLModel.FK_UsuarioPrediccion_ToEquipo", "UsuarioPrediccion");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UsuarioPrediccion>("PredictionSQLModel.FK_UsuarioPrediccion_ToEquipo", "UsuarioPrediccion", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="PredictionSQLModel", Name="Partido")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Partido : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Partido object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="fecha">Initial value of the Fecha property.</param>
+        /// <param name="geolocalizacion">Initial value of the Geolocalizacion property.</param>
+        /// <param name="ponderado">Initial value of the Ponderado property.</param>
+        public static Partido CreatePartido(global::System.Int32 id, global::System.DateTime fecha, global::System.String geolocalizacion, global::System.Int32 ponderado)
+        {
+            Partido partido = new Partido();
+            partido.Id = id;
+            partido.Fecha = fecha;
+            partido.Geolocalizacion = geolocalizacion;
+            partido.Ponderado = ponderado;
+            return partido;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value, "Id");
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime Fecha
+        {
+            get
+            {
+                return _Fecha;
+            }
+            set
+            {
+                OnFechaChanging(value);
+                ReportPropertyChanging("Fecha");
+                _Fecha = StructuralObject.SetValidValue(value, "Fecha");
+                ReportPropertyChanged("Fecha");
+                OnFechaChanged();
+            }
+        }
+        private global::System.DateTime _Fecha;
+        partial void OnFechaChanging(global::System.DateTime value);
+        partial void OnFechaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Geolocalizacion
+        {
+            get
+            {
+                return _Geolocalizacion;
+            }
+            set
+            {
+                OnGeolocalizacionChanging(value);
+                ReportPropertyChanging("Geolocalizacion");
+                _Geolocalizacion = StructuralObject.SetValidValue(value, false, "Geolocalizacion");
+                ReportPropertyChanged("Geolocalizacion");
+                OnGeolocalizacionChanged();
+            }
+        }
+        private global::System.String _Geolocalizacion;
+        partial void OnGeolocalizacionChanging(global::System.String value);
+        partial void OnGeolocalizacionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Ponderado
+        {
+            get
+            {
+                return _Ponderado;
+            }
+            set
+            {
+                OnPonderadoChanging(value);
+                ReportPropertyChanging("Ponderado");
+                _Ponderado = StructuralObject.SetValidValue(value, "Ponderado");
+                ReportPropertyChanged("Ponderado");
+                OnPonderadoChanged();
+            }
+        }
+        private global::System.Int32 _Ponderado;
+        partial void OnPonderadoChanging(global::System.Int32 value);
+        partial void OnPonderadoChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("PredictionSQLModel", "FK_PartidoEquipo_ToPartido", "PartidoEquipo")]
+        public EntityCollection<PartidoEquipo> PartidoEquipo
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<PartidoEquipo>("PredictionSQLModel.FK_PartidoEquipo_ToPartido", "PartidoEquipo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<PartidoEquipo>("PredictionSQLModel.FK_PartidoEquipo_ToPartido", "PartidoEquipo", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("PredictionSQLModel", "FK_UsuarioPrediccion_ToPartido", "UsuarioPrediccion")]
+        public EntityCollection<UsuarioPrediccion> UsuarioPrediccion
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<UsuarioPrediccion>("PredictionSQLModel.FK_UsuarioPrediccion_ToPartido", "UsuarioPrediccion");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UsuarioPrediccion>("PredictionSQLModel.FK_UsuarioPrediccion_ToPartido", "UsuarioPrediccion", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="PredictionSQLModel", Name="PartidoEquipo")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class PartidoEquipo : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new PartidoEquipo object.
+        /// </summary>
+        /// <param name="idPartido">Initial value of the IdPartido property.</param>
+        /// <param name="idEquipo">Initial value of the IdEquipo property.</param>
+        /// <param name="goles">Initial value of the Goles property.</param>
+        public static PartidoEquipo CreatePartidoEquipo(global::System.Int32 idPartido, global::System.Int32 idEquipo, global::System.Int32 goles)
+        {
+            PartidoEquipo partidoEquipo = new PartidoEquipo();
+            partidoEquipo.IdPartido = idPartido;
+            partidoEquipo.IdEquipo = idEquipo;
+            partidoEquipo.Goles = goles;
+            return partidoEquipo;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IdPartido
+        {
+            get
+            {
+                return _IdPartido;
+            }
+            set
+            {
+                if (_IdPartido != value)
+                {
+                    OnIdPartidoChanging(value);
+                    ReportPropertyChanging("IdPartido");
+                    _IdPartido = StructuralObject.SetValidValue(value, "IdPartido");
+                    ReportPropertyChanged("IdPartido");
+                    OnIdPartidoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _IdPartido;
+        partial void OnIdPartidoChanging(global::System.Int32 value);
+        partial void OnIdPartidoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IdEquipo
+        {
+            get
+            {
+                return _IdEquipo;
+            }
+            set
+            {
+                if (_IdEquipo != value)
+                {
+                    OnIdEquipoChanging(value);
+                    ReportPropertyChanging("IdEquipo");
+                    _IdEquipo = StructuralObject.SetValidValue(value, "IdEquipo");
+                    ReportPropertyChanged("IdEquipo");
+                    OnIdEquipoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _IdEquipo;
+        partial void OnIdEquipoChanging(global::System.Int32 value);
+        partial void OnIdEquipoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Goles
+        {
+            get
+            {
+                return _Goles;
+            }
+            set
+            {
+                OnGolesChanging(value);
+                ReportPropertyChanging("Goles");
+                _Goles = StructuralObject.SetValidValue(value, "Goles");
+                ReportPropertyChanged("Goles");
+                OnGolesChanged();
+            }
+        }
+        private global::System.Int32 _Goles;
+        partial void OnGolesChanging(global::System.Int32 value);
+        partial void OnGolesChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("PredictionSQLModel", "FK_PartidoEquipo_ToEquipo", "Equipo")]
+        public Equipo Equipo
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Equipo>("PredictionSQLModel.FK_PartidoEquipo_ToEquipo", "Equipo").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Equipo>("PredictionSQLModel.FK_PartidoEquipo_ToEquipo", "Equipo").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Equipo> EquipoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Equipo>("PredictionSQLModel.FK_PartidoEquipo_ToEquipo", "Equipo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Equipo>("PredictionSQLModel.FK_PartidoEquipo_ToEquipo", "Equipo", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("PredictionSQLModel", "FK_PartidoEquipo_ToPartido", "Partido")]
+        public Partido Partido
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Partido>("PredictionSQLModel.FK_PartidoEquipo_ToPartido", "Partido").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Partido>("PredictionSQLModel.FK_PartidoEquipo_ToPartido", "Partido").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Partido> PartidoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Partido>("PredictionSQLModel.FK_PartidoEquipo_ToPartido", "Partido");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Partido>("PredictionSQLModel.FK_PartidoEquipo_ToPartido", "Partido", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="PredictionSQLModel", Name="Usuario")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Usuario : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Usuario object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="email">Initial value of the Email property.</param>
+        /// <param name="procedencia">Initial value of the Procedencia property.</param>
+        /// <param name="token">Initial value of the Token property.</param>
+        public static Usuario CreateUsuario(global::System.Int32 id, global::System.String email, global::System.String procedencia, global::System.String token)
+        {
+            Usuario usuario = new Usuario();
+            usuario.Id = id;
+            usuario.Email = email;
+            usuario.Procedencia = procedencia;
+            usuario.Token = token;
+            return usuario;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value, "Id");
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Email
+        {
+            get
+            {
+                return _Email;
+            }
+            set
+            {
+                OnEmailChanging(value);
+                ReportPropertyChanging("Email");
+                _Email = StructuralObject.SetValidValue(value, false, "Email");
+                ReportPropertyChanged("Email");
+                OnEmailChanged();
+            }
+        }
+        private global::System.String _Email;
+        partial void OnEmailChanging(global::System.String value);
+        partial void OnEmailChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Procedencia
+        {
+            get
+            {
+                return _Procedencia;
+            }
+            set
+            {
+                OnProcedenciaChanging(value);
+                ReportPropertyChanging("Procedencia");
+                _Procedencia = StructuralObject.SetValidValue(value, false, "Procedencia");
+                ReportPropertyChanged("Procedencia");
+                OnProcedenciaChanged();
+            }
+        }
+        private global::System.String _Procedencia;
+        partial void OnProcedenciaChanging(global::System.String value);
+        partial void OnProcedenciaChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Token
+        {
+            get
+            {
+                return _Token;
+            }
+            set
+            {
+                OnTokenChanging(value);
+                ReportPropertyChanging("Token");
+                _Token = StructuralObject.SetValidValue(value, false, "Token");
+                ReportPropertyChanged("Token");
+                OnTokenChanged();
+            }
+        }
+        private global::System.String _Token;
+        partial void OnTokenChanging(global::System.String value);
+        partial void OnTokenChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("PredictionSQLModel", "FK_UsuarioPrediccion_ToUsuario", "UsuarioPrediccion")]
+        public EntityCollection<UsuarioPrediccion> UsuarioPrediccion
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<UsuarioPrediccion>("PredictionSQLModel.FK_UsuarioPrediccion_ToUsuario", "UsuarioPrediccion");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UsuarioPrediccion>("PredictionSQLModel.FK_UsuarioPrediccion_ToUsuario", "UsuarioPrediccion", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("PredictionSQLModel", "UsuarioAnimal", "Animal")]
+        public EntityCollection<Animal> Animal
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Animal>("PredictionSQLModel.UsuarioAnimal", "Animal");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Animal>("PredictionSQLModel.UsuarioAnimal", "Animal", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="PredictionSQLModel", Name="UsuarioPrediccion")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class UsuarioPrediccion : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new UsuarioPrediccion object.
+        /// </summary>
+        /// <param name="idPartido">Initial value of the IdPartido property.</param>
+        /// <param name="idUsuario">Initial value of the IdUsuario property.</param>
+        /// <param name="idEquipo">Initial value of the IdEquipo property.</param>
+        /// <param name="goles">Initial value of the Goles property.</param>
+        /// <param name="predecido">Initial value of the Predecido property.</param>
+        public static UsuarioPrediccion CreateUsuarioPrediccion(global::System.Int32 idPartido, global::System.Int32 idUsuario, global::System.Int32 idEquipo, global::System.Int32 goles, global::System.Int32 predecido)
+        {
+            UsuarioPrediccion usuarioPrediccion = new UsuarioPrediccion();
+            usuarioPrediccion.IdPartido = idPartido;
+            usuarioPrediccion.IdUsuario = idUsuario;
+            usuarioPrediccion.IdEquipo = idEquipo;
+            usuarioPrediccion.Goles = goles;
+            usuarioPrediccion.Predecido = predecido;
+            return usuarioPrediccion;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IdPartido
+        {
+            get
+            {
+                return _IdPartido;
+            }
+            set
+            {
+                if (_IdPartido != value)
+                {
+                    OnIdPartidoChanging(value);
+                    ReportPropertyChanging("IdPartido");
+                    _IdPartido = StructuralObject.SetValidValue(value, "IdPartido");
+                    ReportPropertyChanged("IdPartido");
+                    OnIdPartidoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _IdPartido;
+        partial void OnIdPartidoChanging(global::System.Int32 value);
+        partial void OnIdPartidoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IdUsuario
+        {
+            get
+            {
+                return _IdUsuario;
+            }
+            set
+            {
+                if (_IdUsuario != value)
+                {
+                    OnIdUsuarioChanging(value);
+                    ReportPropertyChanging("IdUsuario");
+                    _IdUsuario = StructuralObject.SetValidValue(value, "IdUsuario");
+                    ReportPropertyChanged("IdUsuario");
+                    OnIdUsuarioChanged();
+                }
+            }
+        }
+        private global::System.Int32 _IdUsuario;
+        partial void OnIdUsuarioChanging(global::System.Int32 value);
+        partial void OnIdUsuarioChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 IdEquipo
+        {
+            get
+            {
+                return _IdEquipo;
+            }
+            set
+            {
+                if (_IdEquipo != value)
+                {
+                    OnIdEquipoChanging(value);
+                    ReportPropertyChanging("IdEquipo");
+                    _IdEquipo = StructuralObject.SetValidValue(value, "IdEquipo");
+                    ReportPropertyChanged("IdEquipo");
+                    OnIdEquipoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _IdEquipo;
+        partial void OnIdEquipoChanging(global::System.Int32 value);
+        partial void OnIdEquipoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Goles
+        {
+            get
+            {
+                return _Goles;
+            }
+            set
+            {
+                OnGolesChanging(value);
+                ReportPropertyChanging("Goles");
+                _Goles = StructuralObject.SetValidValue(value, "Goles");
+                ReportPropertyChanged("Goles");
+                OnGolesChanged();
+            }
+        }
+        private global::System.Int32 _Goles;
+        partial void OnGolesChanging(global::System.Int32 value);
+        partial void OnGolesChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Predecido
+        {
+            get
+            {
+                return _Predecido;
+            }
+            set
+            {
+                OnPredecidoChanging(value);
+                ReportPropertyChanging("Predecido");
+                _Predecido = StructuralObject.SetValidValue(value, "Predecido");
+                ReportPropertyChanged("Predecido");
+                OnPredecidoChanged();
+            }
+        }
+        private global::System.Int32 _Predecido;
+        partial void OnPredecidoChanging(global::System.Int32 value);
+        partial void OnPredecidoChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("PredictionSQLModel", "FK_UsuarioPrediccion_ToEquipo", "Equipo")]
+        public Equipo Equipo
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Equipo>("PredictionSQLModel.FK_UsuarioPrediccion_ToEquipo", "Equipo").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Equipo>("PredictionSQLModel.FK_UsuarioPrediccion_ToEquipo", "Equipo").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Equipo> EquipoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Equipo>("PredictionSQLModel.FK_UsuarioPrediccion_ToEquipo", "Equipo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Equipo>("PredictionSQLModel.FK_UsuarioPrediccion_ToEquipo", "Equipo", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("PredictionSQLModel", "FK_UsuarioPrediccion_ToPartido", "Partido")]
+        public Partido Partido
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Partido>("PredictionSQLModel.FK_UsuarioPrediccion_ToPartido", "Partido").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Partido>("PredictionSQLModel.FK_UsuarioPrediccion_ToPartido", "Partido").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Partido> PartidoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Partido>("PredictionSQLModel.FK_UsuarioPrediccion_ToPartido", "Partido");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Partido>("PredictionSQLModel.FK_UsuarioPrediccion_ToPartido", "Partido", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("PredictionSQLModel", "FK_UsuarioPrediccion_ToUsuario", "Usuario")]
+        public Usuario Usuario
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Usuario>("PredictionSQLModel.FK_UsuarioPrediccion_ToUsuario", "Usuario").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Usuario>("PredictionSQLModel.FK_UsuarioPrediccion_ToUsuario", "Usuario").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Usuario> UsuarioReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Usuario>("PredictionSQLModel.FK_UsuarioPrediccion_ToUsuario", "Usuario");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Usuario>("PredictionSQLModel.FK_UsuarioPrediccion_ToUsuario", "Usuario", value);
+                }
+            }
+        }
+
+        #endregion
+
     }
 
     #endregion

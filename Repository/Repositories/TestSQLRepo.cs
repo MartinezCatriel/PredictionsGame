@@ -12,7 +12,7 @@ namespace Repository.Repositories
     {
         public TestSQLRepo()
         {
-            using (var ctx = new PrediccionesSQLContainer())
+            using (var ctx = new PredictionSQLEntities())
             {
                 var repo = new SQLRepository(ctx);
                 var equipos = repo.GetAll<Equipo>();
@@ -75,7 +75,7 @@ namespace Repository.Repositories
             }
             */
 
-            using (var ctx = new PrediccionesSQLContainer())
+            using (var ctx = new PredictionSQLEntities())
             {
                 var repo = new SQLRepository(ctx);
                 var newPartidoEquipo = new PartidoEquipo();

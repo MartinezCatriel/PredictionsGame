@@ -4,7 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8422e74fdb7341d7be1f35f096ab4f36" Name="Diagram1" />
+      <Diagram DiagramId="8422e74fdb7341d7be1f35f096ab4f36" Name="Diagram1" >
+        <EntityTypeShape EntityType="PredictionSQLModel.Animal" Width="1.5" PointX="0.45943352601464532" PointY="5.5257578368884319" />
+        <EntityTypeShape EntityType="PredictionSQLModel.Equipo" Width="1.5" PointX="4.9640845344234652" PointY="22.204049239961453" />
+        <EntityTypeShape EntityType="PredictionSQLModel.Partido" Width="1.5" PointX="4.1954834033714059" PointY="24.896692332297885" />
+        <EntityTypeShape EntityType="PredictionSQLModel.PartidoEquipo" Width="1.5" PointX="4.0308580864364547" PointY="0.92032504124582049" />
+        <EntityTypeShape EntityType="PredictionSQLModel.Usuario" Width="1.5" PointX="10.187928886240314" PointY="12.275040557736084" />
+        <EntityTypeShape EntityType="PredictionSQLModel.UsuarioPrediccion" Width="1.5" PointX="3.3136959966801554" PointY="30.844220429120689" />
+        <AssociationConnector Association="PredictionSQLModel.FK_PartidoEquipo_ToEquipo" />
+        <AssociationConnector Association="PredictionSQLModel.FK_UsuarioPrediccion_ToEquipo" />
+        <AssociationConnector Association="PredictionSQLModel.FK_PartidoEquipo_ToPartido" />
+        <AssociationConnector Association="PredictionSQLModel.FK_UsuarioPrediccion_ToPartido" />
+        <AssociationConnector Association="PredictionSQLModel.FK_UsuarioPrediccion_ToUsuario" />
+        <AssociationConnector Association="PredictionSQLModel.UsuarioAnimal" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

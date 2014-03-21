@@ -11,9 +11,9 @@ namespace Repository.EntitiesRepository
         public List<Equipo> GetAll()
         {
             var equipos = new List<Equipo>();
-            using (var ctx = new PrediccionesSQLContainer())
+            using (var ctx = new PredictionSQLEntities())
             {
-                var response = (from e in ctx.Equipoes select e);
+                var response = (from e in ctx.Equipo select e);
                 equipos.AddRange(response.ToList());
             }
             return equipos;
@@ -22,9 +22,9 @@ namespace Repository.EntitiesRepository
         public Equipo GetById(int idEquipo)
         {
             var equipo = new Equipo();
-            using (var ctx = new PrediccionesSQLContainer())
+            using (var ctx = new PredictionSQLEntities())
             {
-                var response = (from e in ctx.Equipoes where e.Id == idEquipo select e);
+                var response = (from e in ctx.Equipo where e.Id == idEquipo select e);
                 equipo = response.ToList().FirstOrDefault();
             }
             return equipo;
@@ -32,9 +32,9 @@ namespace Repository.EntitiesRepository
 
         public void Update(int idequipo, string nombre)
         {
-            using (var ctx = new PrediccionesSQLContainer())
+            using (var ctx = new PredictionSQLEntities())
             {
-                var response = (from e in ctx.Equipoes where e.Id == idequipo select e);
+                var response = (from e in ctx.Equipo where e.Id == idequipo select e);
                 var equipo = response.ToList().FirstOrDefault();
                 if (equipo != null)
                 {

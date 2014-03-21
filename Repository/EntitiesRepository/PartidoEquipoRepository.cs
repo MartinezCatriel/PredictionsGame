@@ -10,10 +10,10 @@ namespace Repository.EntitiesRepository
     {
         public void Insert(int idpartido, int idequipo, int goles)
         {
-            using (var ctx = new PrediccionesSQLContainer())
+            using (var ctx = new PredictionSQLEntities())
             {
                 var partidoEquipo = new PartidoEquipo() { IdEquipo = idequipo, IdPartido = idpartido, Goles = goles };
-                ctx.PartidoEquipoes.AddObject(partidoEquipo);
+                ctx.PartidoEquipo.AddObject(partidoEquipo);
                 ctx.SaveChanges();
             }
 
@@ -21,10 +21,10 @@ namespace Repository.EntitiesRepository
 
         public void Update(int idPartido, int oldIdEquipo, int idEquipo, int goles)
         {
-            using (var ctx = new PrediccionesSQLContainer())
+            using (var ctx = new PredictionSQLEntities())
             {
                 var response =
-                    (from pe in ctx.PartidoEquipoes
+                    (from pe in ctx.PartidoEquipo
                      where pe.IdPartido == idPartido && pe.IdEquipo == oldIdEquipo
                      select pe);
                 var partidoEquipo = response.ToList().FirstOrDefault();
