@@ -41,3 +41,14 @@ C:\Users\Nancy\Desktop\dif\PredictionsGame\SQL\bin\Debug\EntityFramework.xml
 C:\Users\Nancy\Desktop\dif\PredictionsGame\SQL\obj\Debug\SQL.csprojResolveAssemblyReference.cache
 C:\Users\Nancy\Desktop\dif\PredictionsGame\SQL\obj\Debug\SQL.dll
 C:\Users\Nancy\Desktop\dif\PredictionsGame\SQL\obj\Debug\SQL.pdb
+C:\Users\casa\Desktop\world_cup_predictions_backend\SQL\bin\Debug\PrediccionesSDF.sdf
+C:\Users\casa\Desktop\world_cup_predictions_backend\SQL\bin\Debug\Predicciones.mdf
+C:\Users\casa\Desktop\world_cup_predictions_backend\SQL\bin\Debug\Predicciones_log.ldf
+C:\Users\casa\Desktop\world_cup_predictions_backend\SQL\bin\Debug\SQL.dll.config
+C:\Users\casa\Desktop\world_cup_predictions_backend\SQL\bin\Debug\SQL.dll
+C:\Users\casa\Desktop\world_cup_predictions_backend\SQL\bin\Debug\SQL.pdb
+C:\Users\casa\Desktop\world_cup_predictions_backend\SQL\bin\Debug\EntityFramework.dll
+C:\Users\casa\Desktop\world_cup_predictions_backend\SQL\bin\Debug\EntityFramework.xml
+C:\Users\casa\Desktop\world_cup_predictions_backend\SQL\obj\Debug\SQL.csprojResolveAssemblyReference.cache
+C:\Users\casa\Desktop\world_cup_predictions_backend\SQL\obj\Debug\SQL.dll
+C:\Users\casa\Desktop\world_cup_predictions_backend\SQL\obj\Debug\SQL.pdb

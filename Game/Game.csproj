@@ -125,6 +125,7 @@
     <Compile Include="Controllers\AnimalesController.cs" />
     <Compile Include="Controllers\EquiposController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NewPartidoController.cs" />
     <Compile Include="Controllers\PartidosController.cs" />
     <Compile Include="Controllers\PrediccionesController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
@@ -137,6 +138,13 @@
     <Compile Include="RepositoryMap\PartidoMap.cs" />
     <Compile Include="RepositoryMap\UsuarioMap.cs" />
     <Compile Include="RepositoryMap\UsuarioPrediccionMap.cs" />
+    <Compile Include="test.aspx.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test.aspx.designer.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -210,6 +218,7 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="test.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

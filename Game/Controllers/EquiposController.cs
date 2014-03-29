@@ -48,5 +48,29 @@ namespace Game.Controllers
             }
             return response;
         }
+
+        public HttpResponseMessage Post(EquipoToSave equipo)
+        {
+            var response = new HttpResponseMessage(HttpStatusCode.OK);
+            try
+            {
+                var repoEquipo = new EquipoRepository();
+                var equipoMapper = new EquipoMap();
+                var equipoMapped = equipoMapper.MapEquipo(repoEquipo.Update(equipo.id, equipo.nombre));
+                response.Content = new ObjectContent(typeof(Equipo), equipoMapped, new JsonMediaTypeFormatter());
+            }
+            catch (Exception ex)
+            {
+                response.Content = new ObjectContent(typeof(string), "Error al obtener los equipos. Error:" + ex.Message + "Stack:" + ex.StackTrace, new JsonMediaTypeFormatter());
+                return response;
+            }
+            return response;
+        }
+    }
+
+    public class EquipoToSave
+    {
+        public int id { get; set; }
+        public string nombre { get; set; }
     }
 }

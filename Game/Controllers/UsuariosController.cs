@@ -12,6 +12,7 @@ using Common;
 
 namespace Game.Controllers
 {
+
     public class UsuariosController : ApiController
     {
         public HttpResponseMessage Get(int id)
@@ -59,9 +60,12 @@ namespace Game.Controllers
             {
                 var repoUsu = new UsuarioRepository();
                 var usuMapper = new UsuarioMap();
-                var email = FacebookInformation.GetEmailByTokenAuth(newU.token);
+                var fbk = new FacebookInformation();
+                fbk.GetByTokenAuth(newU.token);
+                var email = fbk.Email;
+                var id = fbk.Id;
 
-                var usufromrepo = repoUsu.Insert(email, "FBK", newU.token);
+                var usufromrepo = repoUsu.Insert(email, "FBK", newU.token, id);
                 var usuRTN = usuMapper.MapperUsuario(usufromrepo);
                 response.Content = new ObjectContent(typeof(Usuario), usuRTN, new JsonMediaTypeFormatter());
             }

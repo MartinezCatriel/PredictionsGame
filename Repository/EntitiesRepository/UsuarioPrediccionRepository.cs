@@ -49,6 +49,7 @@ namespace Repository.EntitiesRepository
                 {
                     var toUpdate = response.ToList().FirstOrDefault();
                     toUpdate.Goles = goles;
+                    toUpdate.Predecido = 1;
 
                 }
                 else
@@ -58,9 +59,31 @@ namespace Repository.EntitiesRepository
                     newPred.IdEquipo = idequipo;
                     newPred.IdPartido = idpartido;
                     newPred.IdUsuario = idusaurio;
+                    newPred.Predecido = 0;
                     ctx.UsuarioPrediccion.AddObject(newPred);
                 }
                 ctx.SaveChanges();
+            }
+        }
+
+        private void UpdateUsuarioPuntaje(int idusuario)
+        {
+            //obtener los partidos predecidos del usuario(predecido = 1)
+            //obtener los resultados reales(con goles diferentes a -1) comparar ganador del partido real con el del partido predecido
+            //sumar puntos de ser necesario
+            //actualizar db+
+
+
+
+
+
+            //como saber si el partido ya tiene los resultados finales
+
+            using (var ctx = new PredictionSQLEntities())
+            {
+                var usuarioPredicciones = (from up in ctx.UsuarioPrediccion where up.Predecido == 1 && up.IdUsuario == idusuario select up);
+
+
             }
         }
     }

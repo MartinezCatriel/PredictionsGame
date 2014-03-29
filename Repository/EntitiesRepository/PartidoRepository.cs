@@ -57,108 +57,6 @@ namespace Repository.EntitiesRepository
             return par;
         }
 
-        #region deprecated updates
-        public void Update(int idPartido, DateTime fecha, string geo, int ponderado)
-        {
-            if (idPartido != DefaultIdPartido)
-            {
-                using (var ctx = new PredictionSQLEntities())
-                {
-                    var toUpdate = (from p
-                                    in ctx.Partido
-                                    where p.Id == idPartido
-                                    select p);
-                    var partido = toUpdate.ToList().FirstOrDefault();
-                    if (partido != null)
-                    {
-                        partido.Fecha = fecha;
-                        partido.Geolocalizacion = geo;
-                        partido.Ponderado = ponderado;
-                        ctx.SaveChanges();
-                    }
-
-                }
-            }
-        }
-
-        public void UpdateEquipoGolesByPartidoId(int idPartido, int idEquipo, int goles)
-        {
-            if (idPartido != DefaultIdPartido)
-            {
-                using (var ctx = new PredictionSQLEntities())
-                {
-                    var toUpdate = (from p
-                                    in ctx.PartidoEquipo
-                                    where p.IdPartido == idPartido
-                                    && p.IdEquipo == idEquipo
-                                    select p);
-                    var partido = toUpdate.ToList().FirstOrDefault();
-                    if (partido != null)
-                    {
-                        partido.Goles = goles;
-                        ctx.SaveChanges();
-                    }
-
-                }
-            }
-        }
-
-        public void UpdateEquiposDelPartido(int idPartido, List<int> idEquipos)
-        {
-            if (idPartido != DefaultIdPartido)
-            {
-                using (var ctx = new PredictionSQLEntities())
-                {
-                    var toUpdate = (from p
-                                    in ctx.PartidoEquipo
-                                    where p.IdPartido == idPartido
-                                    select p);
-                    var partidos = toUpdate.ToList();
-
-                    var count = 0;
-                    foreach (var partido in partidos)
-                    {
-                        partido.IdEquipo = idEquipos[count];
-                        count++;
-                    }
-
-                    if (partidos != null && partidos.Count > 0)
-                    {
-                        ctx.SaveChanges();
-                    }
-                }
-            }
-        }
-        #endregion
-
-        public void UpdateEquiposAndGolesFromPartido2(int idPartido, Dictionary<int, int> equiposGoles)
-        {
-            if (idPartido != DefaultIdPartido)
-            {
-                using (var ctx = new PredictionSQLEntities())
-                {
-                    var toUpdate = (from p
-                                    in ctx.PartidoEquipo
-                                    where p.IdPartido == idPartido
-                                    select p);
-                    var partidos = toUpdate.ToList();
-
-
-                    partidos.ForEach((partido) => { ctx.PartidoEquipo.DeleteObject(partido); });
-
-                    foreach (var golesEquipo in equiposGoles)
-                    {
-                        ctx.PartidoEquipo.AddObject(PartidoEquipo.CreatePartidoEquipo(idPartido, golesEquipo.Key, golesEquipo.Value));
-                    }
-
-                    if (partidos.Count > 0)
-                    {
-                        ctx.SaveChanges();
-                    }
-                }
-            }
-        }
-
         public void UpdateEquiposAndGolesFromPartido(int idPartido, Dictionary<int, int> equiposGoles)
         {
             if (idPartido != DefaultIdPartido)
@@ -190,6 +88,37 @@ namespace Repository.EntitiesRepository
                     }
                 }
             }
+        }
+
+        public Partido Insert(DateTime fecha
+            , string geo
+            , int ponderado
+            , Dictionary<int, int> equiposGoles)
+        {
+            var rtnPartido = new Partido();
+            using (var ctx = new PredictionSQLEntities())
+            {
+                var newPartido = new Partido();
+                newPartido.Fecha = fecha;
+                newPartido.Geolocalizacion = geo;
+                newPartido.Ponderado = ponderado;
+                ctx.Partido.AddObject(newPartido);
+
+                PartidoEquipo newPartidoEquipo;
+                foreach (var item in equiposGoles)
+                {
+                    newPartidoEquipo = new PartidoEquipo();
+                    newPartidoEquipo.IdEquipo = item.Key;
+                    newPartidoEquipo.IdPartido = newPartido.Id;
+                    newPartidoEquipo.Goles = item.Value;
+
+                    ctx.PartidoEquipo.AddObject(newPartidoEquipo);
+                }
+                ctx.SaveChanges();
+
+                rtnPartido = (from p in ctx.Partido.Include("PartidoEquipo").Include("PartidoEquipo.Equipo") where p.Id == newPartido.Id select p).ToList().FirstOrDefault();
+            }
+            return rtnPartido;
         }
     }
 }

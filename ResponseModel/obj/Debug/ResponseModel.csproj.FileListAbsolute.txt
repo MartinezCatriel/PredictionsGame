@@ -13,3 +13,8 @@ C:\Users\casa\Desktop\PredictionsGame2\ResponseModel\bin\Debug\ResponseModel.pdb
 C:\Users\casa\Desktop\PredictionsGame2\ResponseModel\obj\Debug\ResponseModel.csprojResolveAssemblyReference.cache
 C:\Users\casa\Desktop\PredictionsGame2\ResponseModel\obj\Debug\ResponseModel.dll
 C:\Users\casa\Desktop\PredictionsGame2\ResponseModel\obj\Debug\ResponseModel.pdb
+C:\Users\casa\Desktop\world_cup_predictions_backend\ResponseModel\bin\Debug\ResponseModel.dll
+C:\Users\casa\Desktop\world_cup_predictions_backend\ResponseModel\bin\Debug\ResponseModel.pdb
+C:\Users\casa\Desktop\world_cup_predictions_backend\ResponseModel\obj\Debug\ResponseModel.csprojResolveAssemblyReference.cache
+C:\Users\casa\Desktop\world_cup_predictions_backend\ResponseModel\obj\Debug\ResponseModel.dll
+C:\Users\casa\Desktop\world_cup_predictions_backend\ResponseModel\obj\Debug\ResponseModel.pdb

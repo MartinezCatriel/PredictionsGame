@@ -30,3 +30,11 @@ C:\Users\Nancy\Desktop\dif\PredictionsGame\Repository\bin\Debug\EntityFramework.
 C:\Users\Nancy\Desktop\dif\PredictionsGame\Repository\obj\Debug\Repository.csprojResolveAssemblyReference.cache
 C:\Users\Nancy\Desktop\dif\PredictionsGame\Repository\obj\Debug\Repository.dll
 C:\Users\Nancy\Desktop\dif\PredictionsGame\Repository\obj\Debug\Repository.pdb
+C:\Users\casa\Desktop\world_cup_predictions_backend\Repository\bin\Debug\Repository.dll.config
+C:\Users\casa\Desktop\world_cup_predictions_backend\Repository\bin\Debug\Repository.dll
+C:\Users\casa\Desktop\world_cup_predictions_backend\Repository\bin\Debug\Repository.pdb
+C:\Users\casa\Desktop\world_cup_predictions_backend\Repository\bin\Debug\EntityFramework.dll
+C:\Users\casa\Desktop\world_cup_predictions_backend\Repository\bin\Debug\EntityFramework.xml
+C:\Users\casa\Desktop\world_cup_predictions_backend\Repository\obj\Debug\Repository.csprojResolveAssemblyReference.cache
+C:\Users\casa\Desktop\world_cup_predictions_backend\Repository\obj\Debug\Repository.dll
+C:\Users\casa\Desktop\world_cup_predictions_backend\Repository\obj\Debug\Repository.pdb

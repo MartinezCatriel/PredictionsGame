@@ -20,7 +20,7 @@ namespace Repository.EntitiesRepository
             return rtn;
         }
 
-        public Usuario Insert(string email, string procedencia, string token)
+        public Usuario Insert(string email, string procedencia, string token, Int32 externalId)
         {
             Usuario newUsu = null;
             using (var ctx = new PredictionSQLEntities())
@@ -29,13 +29,14 @@ namespace Repository.EntitiesRepository
                 var usu = response.ToList().FirstOrDefault();
                 if (usu == null)
                 {
-                    newUsu = new Usuario() { Email = email, Procedencia = procedencia, Token = token };
+                    newUsu = new Usuario() { Email = email, Procedencia = procedencia, Token = token, ExternalId = externalId };
                     ctx.Usuario.AddObject(newUsu);
                 }
                 else
                 {
                     usu.Token = token;
                     usu.Procedencia = procedencia;
+                    usu.ExternalId = externalId;
                     newUsu = usu;
                 }
                 ctx.SaveChanges();

@@ -6,7 +6,6 @@
     <EntitySet Name="Partido" EntityType="PredictionSQLModel.Store.Partido" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="PartidoEquipo" EntityType="PredictionSQLModel.Store.PartidoEquipo" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Usuario" EntityType="PredictionSQLModel.Store.Usuario" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="UsuarioAnimal" EntityType="PredictionSQLModel.Store.UsuarioAnimal" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UsuarioPrediccion" EntityType="PredictionSQLModel.Store.UsuarioPrediccion" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_PartidoEquipo_ToEquipo" Association="PredictionSQLModel.Store.FK_PartidoEquipo_ToEquipo">
       <End Role="Equipo" EntitySet="Equipo" />
@@ -15,14 +14,6 @@
     <AssociationSet Name="FK_PartidoEquipo_ToPartido" Association="PredictionSQLModel.Store.FK_PartidoEquipo_ToPartido">
       <End Role="Partido" EntitySet="Partido" />
       <End Role="PartidoEquipo" EntitySet="PartidoEquipo" />
-    </AssociationSet>
-    <AssociationSet Name="FK_UsuarioAnimal_Animal" Association="PredictionSQLModel.Store.FK_UsuarioAnimal_Animal">
-      <End Role="Animal" EntitySet="Animal" />
-      <End Role="UsuarioAnimal" EntitySet="UsuarioAnimal" />
-    </AssociationSet>
-    <AssociationSet Name="FK_UsuarioAnimal_Usuario" Association="PredictionSQLModel.Store.FK_UsuarioAnimal_Usuario">
-      <End Role="Usuario" EntitySet="Usuario" />
-      <End Role="UsuarioAnimal" EntitySet="UsuarioAnimal" />
     </AssociationSet>
     <AssociationSet Name="FK_UsuarioPrediccion_ToEquipo" Association="PredictionSQLModel.Store.FK_UsuarioPrediccion_ToEquipo">
       <End Role="Equipo" EntitySet="Equipo" />
@@ -78,14 +69,7 @@
     <Property Name="Email" Type="varchar" Nullable="false" MaxLength="600" />
     <Property Name="Procedencia" Type="varchar" Nullable="false" MaxLength="50" />
     <Property Name="Token" Type="varchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="UsuarioAnimal">
-    <Key>
-      <PropertyRef Name="IdUsuario" />
-      <PropertyRef Name="IdAnimal" />
-    </Key>
-    <Property Name="IdUsuario" Type="int" Nullable="false" />
-    <Property Name="IdAnimal" Type="int" Nullable="false" />
+    <Property Name="ExternalId" Type="int" />
   </EntityType>
   <EntityType Name="UsuarioPrediccion">
     <Key>
@@ -120,30 +104,6 @@
       </Principal>
       <Dependent Role="PartidoEquipo">
         <PropertyRef Name="IdPartido" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_UsuarioAnimal_Animal">
-    <End Role="Animal" Type="PredictionSQLModel.Store.Animal" Multiplicity="1" />
-    <End Role="UsuarioAnimal" Type="PredictionSQLModel.Store.UsuarioAnimal" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Animal">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="UsuarioAnimal">
-        <PropertyRef Name="IdAnimal" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_UsuarioAnimal_Usuario">
-    <End Role="Usuario" Type="PredictionSQLModel.Store.Usuario" Multiplicity="1" />
-    <End Role="UsuarioAnimal" Type="PredictionSQLModel.Store.UsuarioAnimal" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Usuario">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="UsuarioAnimal">
-        <PropertyRef Name="IdUsuario" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
